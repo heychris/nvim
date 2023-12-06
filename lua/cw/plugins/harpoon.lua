@@ -5,6 +5,8 @@ return {
   keys = function()
     local harpoon = require 'harpoon'
 
+    harpoon:setup {}
+
     return {
       {
         '<leader>a',
