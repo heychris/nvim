@@ -17,7 +17,11 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup 'cw.plugins'
+require('lazy').setup('cw.plugins', {
+  change_detection = {
+    notify = false,
+  },
+})
 require 'cw.keymaps'
 
 -- [[ Highlight on yank ]]
