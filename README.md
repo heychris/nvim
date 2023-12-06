@@ -1,0 +1,3 @@
+# ~/.config/nvim
+
+Requires neovim
