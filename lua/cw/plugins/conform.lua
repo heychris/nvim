@@ -32,6 +32,7 @@ end, {
 return {
   'stevearc/conform.nvim',
   event = { 'BufWritePre' },
+  lazy = true,
   cmd = { 'ConformInfo' },
   opts = {
     -- Define your formatters

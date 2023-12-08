@@ -5,11 +5,16 @@ return {
   -- Undotree
   {
     'mbbill/undotree',
+    lazy = true,
     keys = {
       { '<leader>u', vim.cmd.UndotreeToggle, desc = 'Toggle undotree' },
     },
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  {
+    'numToStr/Comment.nvim',
+    lazy = true,
+    opts = {},
+  },
 }
