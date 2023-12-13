@@ -8,6 +8,12 @@ end
 
 return {
   {
+    'zbirenbaum/copilot-cmp',
+    config = function()
+      require('copilot_cmp').setup()
+    end,
+  },
+  {
     'hrsh7th/nvim-cmp',
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source
@@ -93,19 +99,30 @@ return {
             return vim_item
           end,
         },
+        sorting = {
+          priority_weight = 2,
+          comparators = {
+            require('copilot_cmp.comparators').prioritize,
+
+            -- Below is the default comparitor list and order for nvim-cmp
+            cmp.config.compare.offset,
+            -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
+            cmp.config.compare.exact,
+            cmp.config.compare.score,
+            cmp.config.compare.recently_used,
+            cmp.config.compare.locality,
+            cmp.config.compare.kind,
+            cmp.config.compare.sort_text,
+            cmp.config.compare.length,
+            cmp.config.compare.order,
+          },
+        },
         experimental = {
           ghost_text = {
             hl_group = 'CmpGhostText',
           },
         },
       }
-    end,
-  },
-
-  {
-    'zbirenbaum/copilot-cmp',
-    config = function()
-      require('copilot_cmp').setup()
     end,
   },
 }
