@@ -9,7 +9,7 @@ return {
       icons_enabled = false,
       sections = {
         lualine_a = {},
-        lualine_b = {},
+        lualine_b = { 'mode' },
         lualine_c = {
           {
             'branch',
