@@ -3,6 +3,9 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Hide current mode
+vim.o.showmode = false
+
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
@@ -49,5 +52,3 @@ vim.o.undofile = true
 -- Disable swap and backup
 vim.o.swapfile = false
 vim.o.backup = false
-
--- vim.o.cursorline = true
