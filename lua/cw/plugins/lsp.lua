@@ -34,11 +34,6 @@ local on_attach = function(_, bufnr)
 end
 
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
   lua_ls = {
@@ -49,6 +44,23 @@ local servers = {
       -- diagnostics = { disable = { 'missing-fields' } },
     },
   },
+  -- tsserver = {
+  --   keys = {
+  --     {
+  --       '<leader>co',
+  --       function()
+  --         vim.lsp.buf.code_action {
+  --           apply = true,
+  --           context = {
+  --             only = { 'source.organizeImports' },
+  --             diagnostics = {},
+  --           },
+  --         }
+  --       end,
+  --       desc = 'Organize Imports',
+  --     },
+  --   },
+  -- },
 }
 
 return {
@@ -66,11 +78,15 @@ return {
     -- Additional lua configuration, makes nvim stuff amazing!
     'folke/neodev.nvim',
   },
-
   config = function()
     -- mason-lspconfig requires that these setup functions are called in this order
     -- before setting up the servers.
-    require('mason').setup()
+    require('mason').setup {
+      ui = {
+        border = 'single',
+      },
+    }
+
     require('mason-lspconfig').setup()
 
     -- Setup neovim lua configuration
