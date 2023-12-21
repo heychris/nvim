@@ -1,5 +1,6 @@
 return {
   'stevearc/oil.nvim',
+  cmd = 'Oil',
   opts = {
     columns = {
       'icon',
@@ -13,6 +14,4 @@ return {
     { '<leader>-', '<CMD>Oil<CR>', desc = 'Open parent directory' },
   },
   lazy = false,
-  -- Optional dependencies
-  -- dependencies = { 'nvim-tree/nvim-web-devicons' },
 }
