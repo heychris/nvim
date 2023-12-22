@@ -31,7 +31,7 @@ return {
         end,
       },
       {
-        '<C-t>',
+        '<C-j>',
         function()
           harpoon:list():select(2)
         end,
@@ -43,7 +43,7 @@ return {
         end,
       },
       {
-        '<C-s>',
+        '<C-m>',
         function()
           harpoon:list():select(4)
         end,
