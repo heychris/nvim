@@ -22,3 +22,4 @@ require('lazy').setup('heychris.plugins', {
     notify = false,
   },
 })
+
