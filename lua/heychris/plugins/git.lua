@@ -1,7 +1,31 @@
 return {
   -- Git related plugins
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
+  {
+    'tpope/vim-fugitive',
+    cmd = {
+      'G',
+      'Gcd',
+      'Gclog',
+      'Gdiffsplit',
+      'Gdrop',
+      'Gedit',
+      'Ggrep',
+      'Git',
+      'Glcd',
+      'Glgrep',
+      'Gllog',
+      'Gpedit',
+      'Gread',
+      'Gsplit',
+      'Gtabedit',
+      'Gvdiffsplit',
+      'Gvsplit',
+      'Gwq',
+      'Gwrite',
+    },
+    event = { 'BufWritePost', 'BufReadPre' },
+  },
+  -- 'tpope/vim-rhubarb',
 
   -- LazyGit
   {
@@ -18,15 +42,23 @@ return {
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
-    lazy = true,
+    event = 'BufReadPre',
     opts = {
       -- See `:help gitsigns.txt`
+      preview_config = {
+        border = 'solid',
+        style = 'minimal',
+      },
       signs = {
         add = { text = '+' },
         change = { text = '~' },
         delete = { text = '_' },
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
+      },
+      current_line_blance = true,
+      current_line_blame_opts = {
+        delay = 4000,
       },
       on_attach = function(bufnr)
         vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
