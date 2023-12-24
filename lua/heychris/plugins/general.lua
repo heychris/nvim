@@ -1,6 +1,9 @@
 return {
   -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
+  {
+    'tpope/vim-sleuth',
+    event = 'BufReadPre',
+  },
 
   -- Undotree
   {
@@ -11,9 +14,14 @@ return {
     },
   },
 
-  -- "gc" to comment visual regions/lines
   {
     'numToStr/Comment.nvim',
-    opts = {},
+    keys = {
+      { 'gc', mode = { 'n', 'x' } },
+      { 'gb', mode = { 'n', 'x' } },
+    },
+    config = function()
+      require 'heychris.config.comment'
+    end,
   },
 }
