@@ -6,6 +6,15 @@ return {
       disable_background = true,
       disable_float_background = true,
       disable_italics = true,
+
+      highlight_groups = {
+        GitSignsAdd = { fg = 'muted', bg = 'none' },
+        GitSignsChange = { fg = 'muted', bg = 'none' },
+        GitSignsDelete = { fg = 'muted', bg = 'none' },
+        GitSignsTopDelete = { fg = 'muted', bg = 'none' },
+        GitSignsChangeDelete = { fg = 'muted', bg = 'none' },
+        GitSignsUntracked = { fg = 'muted', bg = 'none' },
+      },
     }
 
     vim.cmd.colorscheme 'rose-pine'
