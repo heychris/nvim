@@ -55,3 +55,7 @@ vim.opt.fillchars = {
   foldclose = '',
   diff = '╱',
 }
+
+vim.diagnostic.config {
+  float = { border = 'single' },
+}
