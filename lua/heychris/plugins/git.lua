@@ -56,9 +56,9 @@ return {
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
       },
-      current_line_blance = true,
+      current_line_blame = true,
       current_line_blame_opts = {
-        delay = 4000,
+        delay = 3000,
       },
       on_attach = function(bufnr)
         vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
