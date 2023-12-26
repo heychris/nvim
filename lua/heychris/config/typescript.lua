@@ -24,15 +24,26 @@ local function filterReactDTS(value)
   end
 end
 
+local mason_registry = require 'mason-registry'
+local tsserver_path = mason_registry.get_package('typescript-language-server'):get_install_path()
+
 local handlers = {
   ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
     silent = true,
     border = 'single',
   }),
-  ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'single' }),
-  ['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = 'single' }),
+
+  ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    border = 'single',
+  }),
+
+  ['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = true,
+  }),
+
   ['textDocument/definition'] = function(err, result, method, ...)
-    print(vim.print(result))
+    P(result)
+
     if vim.tbl_islist(result) and #result > 1 then
       local filtered_result = filter(result, filterReactDTS)
       return baseDefinitionHandler(err, filtered_result, method, ...)
@@ -42,19 +53,20 @@ local handlers = {
   end,
 }
 
-return {
-  {
-    'pmizio/typescript-tools.nvim',
-    lazy = true,
-    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
-    -- handlers = handlers,
-    -- settings = {
-    --   separate_diagnostic_server = true,
-    --   tsserver_file_preferences = {
-    --     includeInlayParameterNameHints = 'all',
-    --     includeCompletionsForModuleExports = true,
-    --     quotePreference = 'auto',
-    --   },
-    -- },
+require('typescript-tools').setup {
+  on_attach = function(_, bufnr)
+    if vim.fn.has 'nvim-0.10' then
+      vim.lsp.inlay_hint(bufnr, true)
+    end
+  end,
+  handlers = handlers,
+  settings = {
+    tsserver_path = tsserver_path,
+    separate_diagnostic_server = true,
+    tsserver_file_preferences = {
+      includeInlayParameterNameHints = 'all',
+      includeCompletionsForModuleExports = true,
+      quotePreference = 'auto',
+    },
   },
 }

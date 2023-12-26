@@ -28,27 +28,3 @@ vim.api.nvim_create_user_command('FormatEnable', function()
 end, {
   desc = 'Re-enable autoformat-on-save',
 })
-
-return {
-  'stevearc/conform.nvim',
-  event = { 'BufWritePre' },
-  cmd = { 'ConformInfo' },
-  opts = {
-    -- Define your formatters
-    formatters_by_ft = {
-      lua = { 'stylua' },
-      javascript = { { 'prettierd', 'prettier' } },
-      javascriptreact = { { 'prettierd', 'prettier' } },
-      typescript = { { 'prettierd', 'prettier' } },
-      typescriptreact = { { 'prettierd', 'prettier' } },
-    },
-    -- Set up format-on-save
-    format_on_save = function(bufnr)
-      if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-        return
-      end
-
-      return { timeout_ms = 500, lsp_fallback = true }
-    end,
-  },
-}

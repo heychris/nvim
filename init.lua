@@ -2,6 +2,7 @@ if vim.loader then
   vim.loader.enable()
 end
 
+require 'heychris.utils.globals'
 require 'heychris.core.general'
 require 'heychris.core.disable'
 require 'heychris.core.keymaps'
