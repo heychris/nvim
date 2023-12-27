@@ -56,6 +56,8 @@ vim.opt.fillchars = {
   diff = '╱',
 }
 
+vim.opt.diffopt:append 'algorithm:histogram'
+
 vim.diagnostic.config {
   float = { border = 'single' },
 }
