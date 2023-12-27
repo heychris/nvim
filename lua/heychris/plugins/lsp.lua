@@ -1,5 +1,4 @@
 return {
-  -- LSP Configuration & Plugins
   'neovim/nvim-lspconfig',
   cmd = { 'LspInfo', 'LspStart' },
   event = { 'FileType' },
@@ -9,9 +8,17 @@ return {
     'williamboman/mason-lspconfig.nvim',
 
     -- Useful status updates for LSP
-    { 'j-hui/fidget.nvim', opts = {} },
+    {
+      'j-hui/fidget.nvim',
+      opts = {
+        progress = {
+          display = {
+            done_icon = '󰄬',
+          },
+        },
+      },
+    },
 
-    -- Additional lua configuration, makes nvim stuff amazing!
     'folke/neodev.nvim',
   },
   config = function()

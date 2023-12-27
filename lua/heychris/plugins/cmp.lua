@@ -1,6 +1,8 @@
 return {
   {
     'hrsh7th/nvim-cmp',
+    version = false, -- Last release is pretty old
+    event = 'InsertEnter',
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source
       'L3MON4D3/LuaSnip',
@@ -8,7 +10,6 @@ return {
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
     },
-    lazy = true,
     config = function()
       require 'heychris.config.cmp'
     end,

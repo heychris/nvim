@@ -20,6 +20,7 @@ return {
 
   {
     'numToStr/Comment.nvim',
+    event = 'VeryLazy',
     keys = {
       { 'gc', mode = { 'n', 'x' } },
       { 'gb', mode = { 'n', 'x' } },
@@ -32,25 +33,9 @@ return {
   {
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
-    cmd = { 'ConformInfo' },
-    opts = {
-      -- Define your formatters
-      formatters_by_ft = {
-        lua = { 'stylua' },
-        javascript = { { 'prettierd', 'prettier' } },
-        javascriptreact = { { 'prettierd', 'prettier' } },
-        typescript = { { 'prettierd', 'prettier' } },
-        typescriptreact = { { 'prettierd', 'prettier' } },
-      },
-      -- Set up format-on-save
-      format_on_save = function(bufnr)
-        if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-          return
-        end
-
-        return { timeout_ms = 500, lsp_fallback = true }
-      end,
-    },
+    dependencies = { 'mason.nvim' },
+    lazy = true,
+    cmd = 'ConformInfo',
     config = function()
       require 'heychris.config.conform'
     end,
