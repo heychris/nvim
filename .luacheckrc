@@ -1,0 +1,5 @@
+std.nvim = {
+  globals = {
+    'vim',
+  },
+}

@@ -28,7 +28,7 @@ local theme = {
   },
 }
 
--- PERF: we don't need this lualine require madness 🤷
+-- PERF: We don't need this apparently
 local lualine_require = require 'lualine_require'
 lualine_require.require = require
 
@@ -38,6 +38,7 @@ require('lualine').setup {
     lualine_a = { 'mode' },
     lualine_b = {
       { 'branch' },
+
       {
         'filename',
         file_status = false, -- Displays file status (readonly status, modified status)
@@ -50,6 +51,7 @@ require('lualine').setup {
         -- 4: Filename and parent dir, with tilde as the home directory
         path = 4,
       },
+
       {
         'diagnostics',
         sources = { 'nvim_diagnostic' },
@@ -63,8 +65,20 @@ require('lualine').setup {
     lualine_c = {},
     lualine_x = {
       {
+        function()
+          local linters = require('lint').get_running()
+
+          if #linters == 0 then
+            return ''
+          end
+          return table.concat(linters, ', ')
+        end,
+      },
+
+      {
         'filetype',
       },
+
       {
         -- Lsp server name .
         function()
@@ -77,7 +91,6 @@ require('lualine').setup {
           end
 
           local client_names = {}
-          local count = 0
           for _, client in ipairs(clients) do
             client_names[#client_names + 1] = client.name
           end
