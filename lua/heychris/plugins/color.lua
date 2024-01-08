@@ -4,9 +4,12 @@ return {
     name = 'rose-pine',
     config = function()
       require('rose-pine').setup {
-        disable_background = true,
-        disable_float_background = true,
-        disable_italics = true,
+        extend_background_behind_borders = true,
+
+        styles = {
+          transparency = true,
+          italic = false,
+        },
 
         highlight_groups = {
           GitSignsAdd = { fg = 'muted', bg = 'none' },
@@ -19,8 +22,8 @@ return {
       }
 
       vim.cmd.colorscheme 'rose-pine'
-      vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
-      vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+      -- vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+      -- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
     end,
   },
 }
