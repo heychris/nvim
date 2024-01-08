@@ -45,14 +45,6 @@ return {
     'mfussenegger/nvim-lint',
     event = { 'VeryLazy' },
     lazy = true,
-    -- opts = {
-    --   events = { 'BufWritePost', 'BufReadPost', 'InsertLeave' },
-    --   linters_by_ft = {
-    --     lua = { 'luacheck' },
-    --     -- ['*'] = { 'global linter' },
-    --     -- ['_'] = { 'fallback linter' },
-    --   },
-    -- },
     config = function()
       require 'heychris.config.lint'
     end,
