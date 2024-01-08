@@ -12,12 +12,9 @@ return {
         },
 
         highlight_groups = {
-          GitSignsAdd = { fg = 'muted', bg = 'none' },
-          GitSignsChange = { fg = 'muted', bg = 'none' },
-          GitSignsDelete = { fg = 'muted', bg = 'none' },
-          GitSignsTopDelete = { fg = 'muted', bg = 'none' },
-          GitSignsChangeDelete = { fg = 'muted', bg = 'none' },
-          GitSignsUntracked = { fg = 'muted', bg = 'none' },
+          SignAdd = { fg = 'muted', bg = 'NONE' },
+          SignChange = { fg = 'muted', bg = 'NONE' },
+          SignDelete = { fg = 'muted', bg = 'NONE' },
         },
       }
 
