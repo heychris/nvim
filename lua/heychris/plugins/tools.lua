@@ -13,12 +13,24 @@ return {
     lazy = false,
     opts = {
       columns = {
-        'icon',
+        { 'mtime', highlight = 'Number' },
       },
-      view_options = {
-        show_hidden = true,
+      win_options = {
+        number = false,
+        relativenumber = false,
+        signcolumn = 'no',
+        foldcolumn = '0',
+        statuscolumn = '',
       },
+      cleanup_delay_ms = false,
+      delete_to_trash = true,
       skip_confirm_for_simple_edits = true,
+      prompt_save_on_select_new_entry = true,
+      view_options = {
+        is_always_hidden = function(name)
+          return name == '..'
+        end,
+      },
     },
     keys = {
       { '<leader>-', '<CMD>Oil<CR>', desc = 'Open parent directory' },
