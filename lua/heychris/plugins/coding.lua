@@ -11,7 +11,7 @@ return {
 
   {
     'pmizio/typescript-tools.nvim',
-    lazy = true,
+    lazy = false,
     dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
     config = function()
       require 'heychris.config.typescript'

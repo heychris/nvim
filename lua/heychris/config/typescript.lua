@@ -24,9 +24,6 @@ local function filterReactDTS(value)
   end
 end
 
-local mason_registry = require 'mason-registry'
-local tsserver_path = mason_registry.get_package('typescript-language-server'):get_install_path()
-
 local handlers = {
   ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
     silent = true,
@@ -42,8 +39,6 @@ local handlers = {
   }),
 
   ['textDocument/definition'] = function(err, result, method, ...)
-    P(result)
-
     if vim.tbl_islist(result) and #result > 1 then
       local filtered_result = filter(result, filterReactDTS)
       return baseDefinitionHandler(err, filtered_result, method, ...)
@@ -54,15 +49,12 @@ local handlers = {
 }
 
 require('typescript-tools').setup {
-  on_attach = function(_, bufnr)
-    if vim.fn.has 'nvim-0.10' then
-      vim.lsp.inlay_hint(bufnr, true)
-    end
-  end,
   handlers = handlers,
   settings = {
-    tsserver_path = tsserver_path,
-    separate_diagnostic_server = true,
+    publish_diagnostic_on = 'change',
+    expose_as_code_action = 'all',
+    separate_diagnostic_server = false,
+    tsserver_max_memory = 'auto',
     tsserver_file_preferences = {
       includeInlayParameterNameHints = 'all',
       includeCompletionsForModuleExports = true,
