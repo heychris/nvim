@@ -14,6 +14,15 @@ vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
 local telescope = require 'telescope'
 
 telescope.setup {
+  extensions = {
+    ['ui-select'] = {
+      require('telescope.themes').get_dropdown {
+        layout_config = {
+          height = 20,
+        },
+      },
+    },
+  },
   defaults = {
     color_devicons = false,
     mappings = {
@@ -25,7 +34,8 @@ telescope.setup {
   },
 }
 
-pcall(telescope.load_extension, 'fzf')
+telescope.load_extension 'ui-select'
+telescope.load_extension 'fzf'
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
