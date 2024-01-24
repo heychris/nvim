@@ -15,6 +15,7 @@ local telescope = require 'telescope'
 
 telescope.setup {
   defaults = {
+    color_devicons = false,
     mappings = {
       i = {
         ['<C-u>'] = false,
