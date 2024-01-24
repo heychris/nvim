@@ -49,7 +49,7 @@ require('lualine').setup {
         -- 2: Absolute path
         -- 3: Absolute path, with tilde as the home directory
         -- 4: Filename and parent dir, with tilde as the home directory
-        path = 4,
+        path = 1,
       },
 
       {
