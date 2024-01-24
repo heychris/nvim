@@ -6,6 +6,11 @@ return {
   },
 
   {
+    'nvim-tree/nvim-web-devicons',
+    event = 'VeryLazy',
+  },
+
+  {
     'nvim-lualine/lualine.nvim',
     event = 'VeryLazy',
     init = function()
