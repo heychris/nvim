@@ -12,6 +12,7 @@ return {
         },
 
         highlight_groups = {
+          MiniCursorword = { bg = 'highlight_med' },
           SignAdd = { fg = 'muted', bg = 'none' },
           SignChange = { fg = 'muted', bg = 'none' },
           SignDelete = { fg = 'muted', bg = 'none' },

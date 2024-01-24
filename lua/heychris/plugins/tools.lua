@@ -113,4 +113,25 @@ return {
       }
     end,
   },
+
+  {
+    'echasnovski/mini.cursorword',
+    version = '*',
+    config = function()
+      _G.cursorword_blocklist = function()
+        local curword = vim.fn.expand '<cword>'
+
+        local blocklist = { 'end', 'if', 'else', 'for', 'local', 'require', 'function', 'import', 'const', 'let' }
+
+        vim.b.minicursorword_disable = vim.tbl_contains(blocklist, curword)
+      end
+
+      _G.cursorword_disable = function()
+        return vim.b.minicursorword_disable
+      end
+
+      vim.cmd 'au CursorMoved * lua _G.cursorword_blocklist()'
+      require('mini.cursorword').setup {}
+    end,
+  },
 }
