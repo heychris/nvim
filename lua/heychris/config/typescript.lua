@@ -53,12 +53,15 @@ require('typescript-tools').setup {
   settings = {
     publish_diagnostic_on = 'change',
     expose_as_code_action = 'all',
-    separate_diagnostic_server = false,
+    separate_diagnostic_server = true,
     tsserver_max_memory = 'auto',
     tsserver_file_preferences = {
       includeInlayParameterNameHints = 'all',
       includeCompletionsForModuleExports = true,
       quotePreference = 'auto',
+    },
+    jsx_close_tag = {
+      enable = true,
     },
   },
 }
