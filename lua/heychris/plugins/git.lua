@@ -47,4 +47,11 @@ return {
       require 'heychris.config.gitsigns'
     end,
   },
+
+  {
+    'linrongbin16/gitlinker.nvim',
+    config = function()
+      require('gitlinker').setup()
+    end,
+  },
 }
