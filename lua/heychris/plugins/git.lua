@@ -27,6 +27,14 @@ return {
     event = { 'BufWritePost', 'BufReadPre' },
   },
   -- 'tpope/vim-rhubarb',
+  {
+    'sindrets/diffview.nvim',
+    event = 'VeryLazy',
+    lazy = true,
+    config = function()
+      require 'heychris.config.diffview'
+    end,
+  },
 
   {
     'kdheepak/lazygit.nvim',
