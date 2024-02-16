@@ -17,6 +17,9 @@ return {
           SignChange = { fg = 'muted', bg = 'none' },
           SignDelete = { fg = 'muted', bg = 'none' },
 
+          FloatTitle = { fg = 'muted', bg = 'none' },
+          TelescopeTitle = { fg = 'muted', bg = 'none' },
+
           DiagnosticVirtualTextError = { fg = 'love', bg = 'love', blend = 5 },
           DiagnosticVirtualTextHint = { fg = 'iris', bg = 'iris', blend = 5 },
           DiagnosticVirtualTextInfo = { fg = 'foam', bg = 'foam', blend = 5 },
