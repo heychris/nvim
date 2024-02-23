@@ -41,8 +41,9 @@ cmp.setup {
   mapping = cmp.mapping.preset.insert {
     ['<C-n>'] = cmp.mapping.select_next_item(),
     ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-e>'] = cmp.mapping.abort(),
     ['<C-CR>'] = cmp.mapping.confirm { select = true },
+    ['<C-Space>'] = cmp.mapping.complete {},
+    ['<C-e>'] = cmp.mapping.abort(),
   },
   formatting = {
     expandable_indicator = true,
