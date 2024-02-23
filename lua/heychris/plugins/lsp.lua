@@ -18,8 +18,6 @@ return {
         },
       },
     },
-
-    'folke/neodev.nvim',
   },
   config = function()
     require 'heychris.config.lsp'

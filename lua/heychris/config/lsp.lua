@@ -1,40 +1,35 @@
 -- [[ Configure LSP ]]
 local on_attach = function(_, bufnr)
-  local nmap = function(keys, func, desc)
-    if desc then
-      desc = 'LSP: ' .. desc
+  local map = function(keys, func, desc, mode)
+    if not mode then
+      mode = 'n'
     end
 
-    vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
-  end
-
-  local vmap = function(keys, func, desc)
-    if desc then
-      desc = 'LSP: ' .. desc
-    end
-
-    vim.keymap.set('v', keys, func, { buffer = bufnr, desc = desc })
+    vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = 'LSP: ' .. desc })
   end
 
   -- See `:help K` for why this keymap
-  nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-  nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-  nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-  nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-  nmap('gy', require('telescope.builtin').lsp_type_definitions, '[G]oto T[y]pe Definition')
+  map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
+  map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+  map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+  map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+  map('gy', require('telescope.builtin').lsp_type_definitions, '[G]oto T[y]pe Definition')
 
-  nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+  map('K', vim.lsp.buf.hover, 'Hover Documentation')
+  map('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
-  nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-  -- nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-  nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ctions')
-  vmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ctions')
-  nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-  nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+  map('<leader>ca', function()
+    vim.lsp.buf.code_action { context = { only = { 'quickfix', 'refactor', 'source' } } }
+  end, '[C]ode [A]ction')
+
+  map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+  map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+  map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 end
 
--- TSServer is a special case and is managed by typescript-tools
+-- nvim-cmp supports additional completion capabilities, so broadcast that to servers
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 local servers = {
   lua_ls = {
     settings = {
@@ -47,41 +42,28 @@ local servers = {
     },
   },
 }
--- mason-lspconfig requires that these setup functions are called in this order
--- before setting up the servers.
+
 require('mason').setup {
   ui = {
     border = 'single',
   },
 }
 
-require('mason-lspconfig').setup()
-
--- Setup neovim lua configuration
-require('neodev').setup()
-
--- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-
--- Ensure the servers above are installed
-local mason_lspconfig = require 'mason-lspconfig'
-
-mason_lspconfig.setup {
+require('mason-lspconfig').setup {
   ensure_installed = vim.tbl_keys(servers),
   automatic_installation = true,
-}
+  handlers = {
+    function(server_name)
+      local server = servers[server_name] or {}
 
-mason_lspconfig.setup_handlers {
-  function(server_name)
-    require('lspconfig')[server_name].setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = (servers[server_name] or {}).settings,
-      filetypes = (servers[server_name] or {}).filetypes,
-      handlers = (servers[server_name] or {}).handlers,
-    }
-  end,
+      require('lspconfig')[server_name].setup {
+        on_attach = on_attach,
+        settings = server.settings,
+        filetypes = server.filetypes,
+        capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {}),
+      }
+    end,
+  },
 }
 
 -- Add borders to LSP windows
