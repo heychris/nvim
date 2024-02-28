@@ -18,9 +18,7 @@ local on_attach = function(_, bufnr)
   map('K', vim.lsp.buf.hover, 'Hover Documentation')
   map('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
-  map('<leader>ca', function()
-    vim.lsp.buf.code_action { context = { only = { 'quickfix', 'refactor', 'source' } } }
-  end, '[C]ode [A]ction')
+  map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
   map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
@@ -37,7 +35,10 @@ local servers = {
         workspace = { checkThirdParty = false },
         telemetry = { enable = false },
         -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-        -- diagnostics = { disable = { 'missing-fields' } },
+        diagnostics = {
+          disable = { 'missing-fields' },
+          globals = { 'vim', 'require' },
+        },
       },
     },
   },
