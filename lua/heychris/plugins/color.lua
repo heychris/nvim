@@ -53,6 +53,15 @@ return {
           TelescopeBorder = { fg = colors.border },
           FloatTitle = { fg = colors.border },
           TelescopeTitle = { fg = colors.borderDarker },
+          TelescopeMatching = { fg = colors.yellowDark },
+
+          DiagnosticUnderlineError = { undercurl = true },
+          DiagnosticUnderlineWarn = { undercurl = true },
+          DiagnosticUnderlineInfo = { undercurl = true },
+          DiagnosticUnderlineHint = { undercurl = true },
+
+          CmpItemAbbrMatch = { fg = colors.yellowDark, bold = true },
+          CmpItemAbbrMatchFuzzy = { fg = colors.yellowDark, bold = true },
         },
         palette_overrides = {
           fg = '#ffffff',
