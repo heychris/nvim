@@ -27,7 +27,46 @@ return {
         },
       }
 
-      vim.cmd.colorscheme 'rose-pine'
+      -- vim.cmd.colorscheme 'rose-pine'
+    end,
+  },
+  {
+    'datsfilipe/vesper.nvim',
+    config = function()
+      local colors = require 'vesper.colors'
+      local mix = require('vesper.utils').mix
+
+      require('vesper').setup {
+        transparent = true,
+        italics = {
+          comments = true,
+          keywords = false,
+          functions = false,
+          string = false,
+          variables = false,
+        },
+        overrides = {
+          GitSignsAdd = { fg = colors.border },
+          GitSignsChange = { fg = colors.border },
+          GitSignsDelete = { fg = colors.border },
+
+          TelescopeBorder = { fg = colors.border },
+          FloatTitle = { fg = colors.border },
+          TelescopeTitle = { fg = colors.borderDarker },
+        },
+        palette_overrides = {
+          fg = '#ffffff',
+          bg = '#000000',
+          bgFloat = '#000000',
+
+          greenLight = '#99FFE4',
+          green = '#99FFE4',
+          purpleDark = '#65737E',
+          purple = '#FFCFA8',
+          comment = mix('#8b8b8b', '#000000', math.abs(0.94)),
+        },
+      }
+      vim.cmd.colorscheme 'vesper'
     end,
   },
 }
