@@ -50,6 +50,7 @@ return {
           GitSignsChange = { fg = colors.border },
           GitSignsDelete = { fg = colors.border },
 
+          FloatBorder = { fg = colors.border },
           TelescopeBorder = { fg = colors.border },
           FloatTitle = { fg = colors.border },
           TelescopeTitle = { fg = colors.borderDarker },
