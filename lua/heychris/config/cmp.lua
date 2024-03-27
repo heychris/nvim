@@ -1,11 +1,3 @@
-local has_words_before = function()
-  if vim.api.nvim_buf_get_option(0, 'buftype') == 'prompt' then
-    return false
-  end
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match '^%s*$' == nil
-end
-
 -- [[ Configure LuaSnip ]]
 -- See `:help luasnip`
 local luasnip = require 'luasnip'
@@ -48,24 +40,9 @@ cmp.setup {
   formatting = {
     expandable_indicator = true,
     fields = { 'abbr', 'kind', 'menu' },
-    format = function(entry, cmp_item)
-      cmp_item.kind = string.format('%s', cmp_item.kind)
-
-      cmp_item.menu = ({
-        nvim_lsp = '[LSP]',
-        nvim_lsp_signature_help = '[LSP Sig]',
-        nvim_lua = '[Lua]',
-        luasnip = '[LuaSnip]',
-        path = '[Path]',
-        buffer = '[Buffer]',
-        spell = '[Spell]',
-        emoji = '[Emoji]',
-        calc = '[Calc]',
-        copilot = '[Copilot]',
-      })[entry.source.name]
-
-      return cmp_item
-    end,
+    format = require('lspkind').cmp_format {
+      before = require('tailwind-tools.cmp').lspkind_format,
+    },
   },
   sources = {
     { name = 'luasnip', max_item_count = 3 },
