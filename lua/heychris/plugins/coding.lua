@@ -10,12 +10,16 @@ return {
   },
 
   {
-    'pmizio/typescript-tools.nvim',
-    lazy = false,
-    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+    'yioneko/nvim-vtsls',
+    dependencies = { 'neovim/nvim-lspconfig' },
     config = function()
       require 'heychris.config.typescript'
     end,
+  },
+
+  {
+    'luckasRanarison/tailwind-tools.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
   },
 
   {
