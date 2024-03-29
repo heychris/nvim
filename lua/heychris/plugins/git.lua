@@ -36,16 +36,16 @@ return {
     end,
   },
 
-  {
-    'kdheepak/lazygit.nvim',
-    lazy = true,
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-    },
-    keys = {
-      { '<leader>gs', '<cmd>LazyGit<CR>', desc = 'LazyGit' },
-    },
-  },
+  -- {
+  --   'kdheepak/lazygit.nvim',
+  --   lazy = true,
+  --   dependencies = {
+  --     'nvim-lua/plenary.nvim',
+  --   },
+  --   keys = {
+  --     { '<leader>gs', '<cmd>LazyGit<CR>', desc = 'LazyGit' },
+  --   },
+  -- },
 
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
