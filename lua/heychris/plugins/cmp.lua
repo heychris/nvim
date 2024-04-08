@@ -10,8 +10,8 @@ return {
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
 
-      'luckasRanarison/tailwind-tools.nvim',
-      'onsails/lspkind-nvim',
+      -- 'luckasRanarison/tailwind-tools.nvim',
+      -- 'onsails/lspkind-nvim',
     },
     config = function()
       require 'heychris.config.cmp'

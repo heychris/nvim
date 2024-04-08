@@ -17,10 +17,10 @@ return {
     end,
   },
 
-  {
-    'luckasRanarison/tailwind-tools.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-  },
+  -- {
+  --   'luckasRanarison/tailwind-tools.nvim',
+  --   dependencies = { 'nvim-treesitter/nvim-treesitter' },
+  -- },
 
   {
     'numToStr/Comment.nvim',
@@ -34,10 +34,21 @@ return {
     end,
   },
 
+  -- {
+  --   'zapling/mason-conform.nvim',
+  --   dependencies = {
+  --     'williamboman/mason.nvim',
+  --     'stevearc/conform.nvim',
+  --   },
+  -- },
+
   {
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
-    dependencies = { 'mason.nvim' },
+    dependencies = {
+      'mason.nvim',
+      -- 'mason-conform.nvim',
+    },
     lazy = true,
     cmd = 'ConformInfo',
     config = function()
