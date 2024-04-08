@@ -36,17 +36,24 @@ require('conform').setup {
     quiet = false, -- not recommended to change
   },
 
+  -- log_level = vim.log.levels.DEBUG,
+
   -- The options you set here will be merged with the builtin formatters.
   formatters = {
     injected = { options = { ignore_errors = true } },
+    -- prettierd = {
+    --   command = 'prettierd',
+    --   args = { vim.api.nvim_buf_get_name(0) },
+    --   stin = true,
+    -- },
   },
 
   formatters_by_ft = {
     lua = { 'stylua' },
-    javascript = { { 'prettierd', 'prettier' } },
-    javascriptreact = { { 'prettierd', 'prettier' } },
-    typescript = { { 'prettierd', 'prettier' } },
-    typescriptreact = { { 'prettierd', 'prettier' } },
+    javascript = { { 'prettier' } },
+    javascriptreact = { { 'prettier' } },
+    typescript = { { 'prettier' } },
+    typescriptreact = { { 'prettier' } },
   },
 
   format_on_save = function(bufnr)
