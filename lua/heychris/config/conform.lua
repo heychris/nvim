@@ -7,6 +7,7 @@ vim.api.nvim_create_user_command('Format', function(args)
       ['end'] = { args.line2, end_line:len() },
     }
   end
+
   require('conform').format { async = true, lsp_fallback = true, range = range }
 end, { range = true })
 
@@ -30,30 +31,19 @@ end, {
 })
 
 require('conform').setup {
-  format = {
-    timeout_ms = 3000,
-    async = false, -- not recommended to change
-    quiet = false, -- not recommended to change
-  },
-
   -- log_level = vim.log.levels.DEBUG,
 
   -- The options you set here will be merged with the builtin formatters.
   formatters = {
     injected = { options = { ignore_errors = true } },
-    -- prettierd = {
-    --   command = 'prettierd',
-    --   args = { vim.api.nvim_buf_get_name(0) },
-    --   stin = true,
-    -- },
   },
 
   formatters_by_ft = {
     lua = { 'stylua' },
-    javascript = { { 'prettier' } },
-    javascriptreact = { { 'prettier' } },
-    typescript = { { 'prettier' } },
-    typescriptreact = { { 'prettier' } },
+    javascript = { { 'prettierd', 'prettier' } },
+    javascriptreact = { { 'prettierd', 'prettier' } },
+    typescript = { { 'prettierd', 'prettier' } },
+    typescriptreact = { { 'prettierd', 'prettier' } },
   },
 
   format_on_save = function(bufnr)
