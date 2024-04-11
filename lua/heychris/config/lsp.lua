@@ -10,19 +10,19 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-  map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+  map('gr', require('fzf-lua').lsp_references, '[G]oto [R]eferences')
   map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-  map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-  map('gy', require('telescope.builtin').lsp_type_definitions, '[G]oto T[y]pe Definition')
+  map('gI', require('fzf-lua').lsp_implementations, '[G]oto [I]mplementation')
+  map('gy', require('fzf-lua').lsp_typedefs, '[G]oto T[y]pe Definition')
 
   map('K', vim.lsp.buf.hover, 'Hover Documentation')
   map('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
-  map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+  map('<leader>ca', require('fzf-lua').lsp_code_actions, '[C]ode [A]ction')
 
   map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-  map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-  map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+  map('<leader>ds', require('fzf-lua').lsp_document_symbols, '[D]ocument [S]ymbols')
+  map('<leader>ws', require('fzf-lua').lsp_workspace_symbols, '[W]orkspace [S]ymbols')
 end
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers

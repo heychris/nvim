@@ -32,6 +32,7 @@ return {
   },
   {
     'datsfilipe/vesper.nvim',
+    lazy = false,
     config = function()
       local colors = require 'vesper.colors'
       local mix = require('vesper.utils').mix
@@ -53,8 +54,14 @@ return {
           FloatBorder = { fg = colors.border },
           TelescopeBorder = { fg = colors.border },
           FloatTitle = { fg = colors.border },
+
           TelescopeTitle = { fg = colors.borderDarker },
+
           TelescopeMatching = { fg = colors.yellowDark },
+          TelescopeSelectionCaret = { fg = colors.yellowDark },
+          TelescopePromptPrefix = { fg = colors.green },
+          TelescopePromptNormal = { fg = colors.secondary },
+          TelescopeMultiSelection = { fg = colors.yellowDark },
 
           DiagnosticUnderlineError = { undercurl = true },
           DiagnosticUnderlineWarn = { undercurl = true },
@@ -63,6 +70,17 @@ return {
 
           CmpItemAbbrMatch = { fg = colors.yellowDark, bold = true },
           CmpItemAbbrMatchFuzzy = { fg = colors.yellowDark, bold = true },
+
+          FzfLuaNormal = { fg = colors.fg },
+          FzfLuaBorder = { fg = colors.border },
+          FzfLuaHeaderText = { fg = colors.fg },
+          FzfLuaHeaderBind = { fg = colors.symbol },
+
+          -- FzfLuaCursorLineNr = { fg = colors.yellowDark },
+          -- FzfLuaBufFlagCur = { fg = colors.yellowDark },
+          -- FzfLuaBufFlagAlt = { fg = colors.yellowDark },
+          -- FzfLuaLiveSym = { fg = colors.yellowDark },
+          -- FzfLuaTabMarker = { fg = colors.yellowDark },
         },
         palette_overrides = {
           fg = '#ffffff',
