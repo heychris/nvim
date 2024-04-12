@@ -9,7 +9,11 @@ end
 fzf.setup {
   { 'default-title' }, -- base profile
   desc = 'custom telescope based profile',
-  fzf_opts = { ['--layout'] = 'default', ['--marker'] = '+' },
+  fzf_opts = {
+    ['--layout'] = 'reverse',
+    ['--marker'] = '+',
+    ['--margin'] = '1',
+  },
   winopts = {
     width = 0.8,
     height = 0.9,
