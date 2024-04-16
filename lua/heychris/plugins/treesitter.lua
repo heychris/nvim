@@ -19,13 +19,13 @@ return {
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
       'nvim-treesitter/nvim-treesitter-context',
+      'RRethy/nvim-treesitter-textsubjects',
     },
   },
 
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
-    event = 'VeryLazy',
-    dependencies = 'nvim-treesitter/nvim-treesitter',
+    lazy = true,
   },
 
   -- Show context of the current function
@@ -40,5 +40,10 @@ return {
     'JoosepAlviste/nvim-ts-context-commentstring',
     lazy = true,
     dependencies = 'nvim-treesitter/nvim-treesitter',
+  },
+
+  {
+    'RRethy/nvim-treesitter-textsubjects',
+    lazy = true,
   },
 }
