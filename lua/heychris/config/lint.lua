@@ -11,6 +11,7 @@ lint.linters_by_ft = {
   html = { 'htmllint' },
   css = { 'stylelint' },
   scss = { 'stylelint' },
+  ['*'] = { 'codespell' },
 }
 
 vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
