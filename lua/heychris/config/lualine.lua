@@ -24,35 +24,6 @@ local theme = {
   },
 }
 
--- local palette = require 'rose-pine.palette'
--- local theme = {
---   normal = {
---     a = { fg = palette.rose, bg = palette.overlay },
---     b = { fg = palette.muted, bg = palette.none },
---
---     x = { fg = palette.muted, bg = palette.none },
---   },
---
---   insert = {
---     a = { fg = palette.foam, bg = palette.overlay },
---   },
---
---   visual = {
---     a = { fg = palette.iris, bg = palette.overlay },
---   },
---
---   command = {
---     a = { fg = palette.love, bg = palette.overlay },
---   },
---
---   inactive = {
---     a = { fg = palette.muted, bg = palette.none },
---     b = { fg = palette.muted, bg = palette.none },
---
---     x = { fg = palette.muted, bg = palette.none },
---   },
--- }
-
 -- PERF: We don't need this apparently
 local lualine_require = require 'lualine_require'
 lualine_require.require = require

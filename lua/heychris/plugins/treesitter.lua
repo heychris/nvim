@@ -23,11 +23,11 @@ return {
     },
   },
 
-  {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    lazy = true,
-  },
-
+  -- {
+  --   'nvim-treesitter/nvim-treesitter-textobjects',
+  --   lazy = true,
+  -- },
+  --
   -- Show context of the current function
   {
     'nvim-treesitter/nvim-treesitter-context',
