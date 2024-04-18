@@ -7,6 +7,8 @@ return {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
 
+    'yioneko/nvim-vtsls',
+
     -- Useful status updates for LSP
     {
       'j-hui/fidget.nvim',

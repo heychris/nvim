@@ -25,16 +25,15 @@ local servers = {
       end,
     },
     settings = {
+      vtsls = {
+        experimental = {
+          completion = {
+            enableServerSideFuzzyMatch = true,
+          },
+        },
+      },
       typescript = {
         preferGoToSourceDefinition = true,
-        inlayHints = {
-          parameterNames = { enabled = 'literals' },
-          parameterTypes = { enabled = true },
-          variableTypes = { enabled = true },
-          propertyDeclarationTypes = { enabled = true },
-          functionLikeReturnTypes = { enabled = true },
-          enumMemberValues = { enabled = true },
-        },
       },
     },
   },

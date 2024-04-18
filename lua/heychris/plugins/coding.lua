@@ -11,7 +11,6 @@ return {
 
   {
     'yioneko/nvim-vtsls',
-    dependencies = { 'neovim/nvim-lspconfig' },
     config = function()
       require 'heychris.config.typescript'
     end,
