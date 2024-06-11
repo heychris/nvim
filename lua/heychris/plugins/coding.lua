@@ -30,11 +30,8 @@ return {
 
   {
     'stevearc/conform.nvim',
+    pin = true,
     event = { 'BufWritePre' },
-    dependencies = {
-      'mason.nvim',
-    },
-    lazy = true,
     cmd = 'ConformInfo',
     config = function()
       require 'heychris.config.conform'
@@ -88,4 +85,21 @@ return {
       },
     },
   },
+  --
+  -- {
+  --   'mfussenegger/nvim-dap',
+  --   dependencies = {
+  --     'rcarriga/nvim-dap-ui',
+  --     'theHamsta/nvim-dap-virtual-text',
+  --     'nvim-neotest/nvim-nio',
+  --     'folke/neoconf.nvim',
+  --     'jay-babu/mason-nvim-dap.nvim',
+  --     'williamboman/mason.nvim',
+  --   },
+  --   event = { 'VeryLazy' },
+  --   lazy = true,
+  --   config = function()
+  --     require 'heychris.config.dap'
+  --   end,
+  -- },
 }
