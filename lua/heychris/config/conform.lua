@@ -32,6 +32,7 @@ end, {
 
 require('conform').setup {
   -- log_level = vim.log.levels.DEBUG,
+  notify_on_error = false,
 
   -- The options you set here will be merged with the builtin formatters.
   formatters = {
