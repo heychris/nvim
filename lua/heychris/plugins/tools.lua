@@ -103,4 +103,15 @@ return {
       require 'heychris.config.fzf'
     end,
   },
+
+  {
+    'tris203/precognition.nvim',
+    event = 'VeryLazy',
+    config = {
+      startVisible = false,
+    },
+    keys = {
+      { '<leader>p', '<CMD>lua require("precognition").toggle()<CR>', desc = 'Toggle [p]recognition' },
+    },
+  },
 }
