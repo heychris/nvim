@@ -85,6 +85,12 @@ return {
       },
     },
   },
+
+  {
+    'dmmulroy/tsc.nvim',
+    event = { 'VeryLazy' },
+    opts = {},
+  },
   --
   -- {
   --   'mfussenegger/nvim-dap',
