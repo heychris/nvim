@@ -58,3 +58,8 @@ vim.keymap.set('n', 'q', function()
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('q', true, true, true), 'n', false)
   end
 end)
+
+-- Comments text object
+local comment = require 'vim._comment'
+vim.keymap.set('x', 'ic', comment.textobject)
+vim.keymap.set('o', 'ic', comment.textobject)
