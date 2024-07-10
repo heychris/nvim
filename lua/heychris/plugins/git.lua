@@ -29,8 +29,11 @@ return {
   -- 'tpope/vim-rhubarb',
   {
     'sindrets/diffview.nvim',
-    event = 'VeryLazy',
-    lazy = true,
+    cmd = { 'DiffviewOpen', 'DiffviewFileHistory' },
+    keys = {
+      { '<leader>gh', '<cmd>DiffviewOpen<CR>', desc = 'DiffviewOpen' },
+      { '<leader>gh', '<cmd>DiffviewFileHistory % --no-merges --follow<CR>', desc = 'Git file history' },
+    },
     config = function()
       require 'heychris.config.diffview'
     end,
