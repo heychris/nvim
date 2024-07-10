@@ -103,4 +103,6 @@ return {
       require 'heychris.config.fzf'
     end,
   },
+
+  'tpope/vim-surround',
 }

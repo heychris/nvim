@@ -37,6 +37,10 @@ return {
       local colors = require 'vesper.colors'
       local mix = require('vesper.utils').mix
 
+      local function diagnosticBg(color)
+        return mix(color, '#000000', 0.1)
+      end
+
       require('vesper').setup {
         transparent = true,
         italics = {
@@ -68,6 +72,11 @@ return {
           DiagnosticUnderlineInfo = { undercurl = true },
           DiagnosticUnderlineHint = { undercurl = true },
 
+          DiagnosticVirtualTextError = { fg = colors.error, bg = diagnosticBg(colors.error) },
+          DiagnosticVirtualTextHint = { fg = colors.hint, bg = diagnosticBg(colors.hint) },
+          DiagnosticVirtualTextInfo = { fg = colors.info, bg = diagnosticBg(colors.info) },
+          DiagnosticVirtualTextWarn = { fg = colors.warn, bg = diagnosticBg(colors.warn) },
+
           CmpItemAbbrMatch = { fg = colors.yellowDark, bold = true },
           CmpItemAbbrMatchFuzzy = { fg = colors.yellowDark, bold = true },
 
@@ -83,7 +92,8 @@ return {
           -- FzfLuaTabMarker = { fg = colors.yellowDark },
         },
         palette_overrides = {
-          fg = '#ffffff',
+          -- fg = '#FFFFFF',
+          fg = '#FDFDFD',
           bg = '#000000',
           bgFloat = '#000000',
 
