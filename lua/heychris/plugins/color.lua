@@ -93,7 +93,7 @@ return {
         },
         palette_overrides = {
           -- fg = '#FFFFFF',
-          fg = '#FDFDFD',
+          fg = '#EEEEEE',
           bg = '#000000',
           bgFloat = '#000000',
 
@@ -107,4 +107,32 @@ return {
       vim.cmd.colorscheme 'vesper'
     end,
   },
+  --
+  -- {
+  --   'RRethy/base16-nvim',
+  --   lazy = false,
+  --   config = function()
+  --     --vim.cmd 'colorscheme base16-black-metal-bathory'
+  --     require('base16-colorscheme').setup {
+  --       base00 = '#000000',
+  --       base01 = '#121212',
+  --       base02 = '#222222',
+  --       --base03 = '#333333',
+  --       base03 = '#999999',
+  --       base04 = '#999999',
+  --       --base05 = '#c1c1c1',
+  --       base05 = '#eeeeee',
+  --       base06 = '#999999',
+  --       base07 = '#c1c1c1',
+  --       base08 = '#5f8787',
+  --       base09 = '#aaaaaa',
+  --       base0A = '#e78a53',
+  --       base0B = '#fbcb97',
+  --       base0C = '#aaaaaa',
+  --       base0D = '#888888',
+  --       base0E = '#999999',
+  --       base0F = '#444444',
+  --     }
+  --   end,
+  -- },
 }
