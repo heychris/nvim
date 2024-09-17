@@ -31,7 +31,7 @@ return {
     'sindrets/diffview.nvim',
     cmd = { 'DiffviewOpen', 'DiffviewFileHistory' },
     keys = {
-      { '<leader>gh', '<cmd>DiffviewOpen<CR>', desc = 'DiffviewOpen' },
+      -- { '<leader>gh', '<cmd>DiffviewOpen<CR>', desc = 'DiffviewOpen' },
       { '<leader>gh', '<cmd>DiffviewFileHistory % --no-merges --follow<CR>', desc = 'Git file history' },
     },
     config = function()
