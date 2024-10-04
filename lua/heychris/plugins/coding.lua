@@ -1,13 +1,13 @@
 return {
-  {
-    'zbirenbaum/copilot.lua',
-    cmd = 'Copilot',
-    event = 'InsertEnter',
-    opts = {
-      suggestion = { enabled = false },
-      panel = { enabled = false },
-    },
-  },
+  -- {
+  --   'zbirenbaum/copilot.lua',
+  --   cmd = 'Copilot',
+  --   event = 'InsertEnter',
+  --   opts = {
+  --     suggestion = { enabled = false },
+  --     panel = { enabled = false },
+  --   },
+  -- },
 
   {
     'yioneko/nvim-vtsls',
@@ -30,7 +30,7 @@ return {
 
   {
     'stevearc/conform.nvim',
-    pin = true,
+    -- pin = true,
     event = { 'BufWritePre' },
     cmd = 'ConformInfo',
     config = function()

@@ -61,7 +61,7 @@ cmp.setup {
         spell = '[Spell]',
         emoji = '[Emoji]',
         calc = '[Calc]',
-        copilot = '[Copilot]',
+        -- copilot = '[Copilot]',
       })[entry.source.name]
 
       return cmp_item
@@ -70,7 +70,7 @@ cmp.setup {
   sources = {
     { name = 'luasnip', max_item_count = 3 },
     { name = 'nvim_lsp_signature_help' },
-    { name = 'copilot' },
+    -- { name = 'copilot' },
     { name = 'nvim_lsp', max_item_count = 20 },
     { name = 'path' },
     { name = 'calc' },
@@ -78,7 +78,7 @@ cmp.setup {
   sorting = {
     priority_weight = 2,
     comparators = {
-      require('copilot_cmp.comparators').prioritize,
+      -- require('copilot_cmp.comparators').prioritize,
 
       -- Below is the default comparitor list and order for nvim-cmp
       cmp.config.compare.offset,
