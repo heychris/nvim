@@ -24,33 +24,38 @@
 --   },
 -- }
 
-local palette = require 'rose-pine.palette'
+local p = require 'rose-pine.palette'
 
 local theme = {
   normal = {
-    a = { fg = palette.rose, bg = palette.overlay },
-    b = { fg = palette.muted, bg = palette.none },
-
-    x = { fg = palette.muted, bg = palette.none },
+    a = { bg = p.rose, fg = p.base, gui = 'bold' },
+    b = { bg = p.none, fg = p.muted },
+    c = { bg = p.none, fg = p.muted },
   },
-
   insert = {
-    a = { fg = palette.foam, bg = palette.overlay },
+    a = { bg = p.foam, fg = p.base, gui = 'bold' },
+    b = { bg = p.none, fg = p.muted },
+    c = { bg = p.none, fg = p.muted },
   },
-
   visual = {
-    a = { fg = palette.iris, bg = palette.overlay },
+    a = { bg = p.iris, fg = p.base, gui = 'bold' },
+    b = { bg = p.none, fg = p.muted },
+    c = { bg = p.none, fg = p.muted },
   },
-
+  replace = {
+    a = { bg = p.pine, fg = p.base, gui = 'bold' },
+    b = { bg = p.none, fg = p.muted },
+    c = { bg = p.none, fg = p.muted },
+  },
   command = {
-    a = { fg = palette.love, bg = palette.overlay },
+    a = { bg = p.love, fg = p.base, gui = 'bold' },
+    b = { bg = p.none, fg = p.muted },
+    c = { bg = p.none, fg = p.muted },
   },
-
   inactive = {
-    a = { fg = palette.muted, bg = palette.none },
-    b = { fg = palette.muted, bg = palette.none },
-
-    x = { fg = palette.muted, bg = palette.none },
+    a = { bg = p.base, fg = p.muted, gui = 'bold' },
+    b = { bg = p.none, fg = p.muted },
+    c = { bg = p.none, fg = p.muted },
   },
 }
 
