@@ -1,32 +1,58 @@
-local colors = require 'vesper.colors'
+-- local colors = require 'vesper.colors'
+--
+-- local theme = {
+--   normal = {
+--     a = { fg = colors.fgCommand, bg = colors.bgDark },
+--     b = { fg = colors.primary, bg = colors.bg },
+--
+--     x = { fg = colors.primary, bg = colors.bg },
+--   },
+--   insert = {
+--     a = { fg = colors.yellowDark, bg = colors.bgDark },
+--   },
+--   visual = {
+--     a = { fg = colors.green, bg = colors.bgOption },
+--   },
+--   command = {
+--     a = { fg = colors.purple, bg = colors.bgOption },
+--   },
+--   inactive = {
+--     a = { fg = colors.border, bg = colors.bg },
+--     b = { fg = colors.border, bg = colors.bg },
+--
+--     x = { fg = colors.border, bg = colors.bg },
+--   },
+-- }
+
+local palette = require 'rose-pine.palette'
 
 local theme = {
   normal = {
-    a = { fg = colors.fgCommand, bg = colors.bgDark },
-    b = { fg = colors.primary, bg = colors.bg },
+    a = { fg = palette.rose, bg = palette.overlay },
+    b = { fg = palette.muted, bg = palette.none },
 
-    x = { fg = colors.primary, bg = colors.bg },
+    x = { fg = palette.muted, bg = palette.none },
   },
+
   insert = {
-    a = { fg = colors.yellowDark, bg = colors.bgDark },
+    a = { fg = palette.foam, bg = palette.overlay },
   },
-  visual = {
-    a = { fg = colors.green, bg = colors.bgOption },
-  },
-  command = {
-    a = { fg = colors.purple, bg = colors.bgOption },
-  },
-  inactive = {
-    a = { fg = colors.border, bg = colors.bg },
-    b = { fg = colors.border, bg = colors.bg },
 
-    x = { fg = colors.border, bg = colors.bg },
+  visual = {
+    a = { fg = palette.iris, bg = palette.overlay },
+  },
+
+  command = {
+    a = { fg = palette.love, bg = palette.overlay },
+  },
+
+  inactive = {
+    a = { fg = palette.muted, bg = palette.none },
+    b = { fg = palette.muted, bg = palette.none },
+
+    x = { fg = palette.muted, bg = palette.none },
   },
 }
-
--- PERF: We don't need this apparently
-local lualine_require = require 'lualine_require'
-lualine_require.require = require
 
 require('lualine').setup {
   icons_enabled = false,

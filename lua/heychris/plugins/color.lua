@@ -24,10 +24,15 @@ return {
           DiagnosticVirtualTextHint = { fg = 'iris', bg = 'iris', blend = 5 },
           DiagnosticVirtualTextInfo = { fg = 'foam', bg = 'foam', blend = 5 },
           DiagnosticVirtualTextWarn = { fg = 'gold', bg = 'gold', blend = 5 },
+
+          -- FzfLuaNormal = { fg = colors.fg },
+          FzfLuaBorder = { fg = 'muted' },
+          -- FzfLuaHeaderText = { fg = colors.fg },
+          -- FzfLuaHeaderBind = { fg = colors.symbol },
         },
       }
 
-      -- vim.cmd.colorscheme 'rose-pine'
+      vim.cmd.colorscheme 'rose-pine'
     end,
   },
   {
@@ -104,10 +109,9 @@ return {
           comment = mix('#8b8b8b', '#000000', math.abs(0.94)),
         },
       }
-      vim.cmd.colorscheme 'vesper'
+      -- vim.cmd.colorscheme 'vesper'
     end,
   },
-  --
   -- {
   --   'RRethy/base16-nvim',
   --   lazy = false,
