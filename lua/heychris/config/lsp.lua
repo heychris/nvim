@@ -81,7 +81,7 @@ require('lspconfig.configs').vtsls = require('vtsls').lspconfig
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+-- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
 require('mason-lspconfig').setup {
   ensure_installed = vim.tbl_keys(servers),
