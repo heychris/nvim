@@ -9,6 +9,8 @@ return {
 
     'yioneko/nvim-vtsls',
 
+    'saghen/blink.cmp',
+
     -- Useful status updates for LSP
     {
       'j-hui/fidget.nvim',

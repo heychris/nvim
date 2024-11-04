@@ -37,6 +37,9 @@ require('conform').setup {
   -- The options you set here will be merged with the builtin formatters.
   formatters = {
     injected = { options = { ignore_errors = true } },
+    black = {
+      prepend_args = { '--fast' },
+    },
   },
 
   formatters_by_ft = {
@@ -45,6 +48,7 @@ require('conform').setup {
     javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
     typescript = { 'prettierd', 'prettier', stop_after_first = true },
     typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+    python = { 'isort', 'black' },
   },
 
   format_on_save = function(bufnr)
@@ -52,6 +56,6 @@ require('conform').setup {
       return
     end
 
-    return { timeout_ms = 500, lsp_fallback = true }
+    return { timeout_ms = 5000, lsp_fallback = true }
   end,
 }
