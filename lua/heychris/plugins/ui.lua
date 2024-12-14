@@ -27,6 +27,18 @@ return {
       require 'heychris.config.lualine'
     end,
   },
+  {
+    'aaronik/treewalker.nvim',
+    opts = {
+      highlight = false,
+    },
+    keys = {
+      { '<A-j>', ':Treewalker Down<CR>', desc = 'Down AST' },
+      { '<A-k>', ':Treewalker Up<CR>', desc = 'Up AST' },
+      { '<A-h>', ':Treewalker Left<CR>', desc = 'Left AST' },
+      { '<A-l>', ':Treewalker Right<CR>', desc = 'Right AST' },
+    },
+  },
   --
   -- {
   --   'folke/flash.nvim',
