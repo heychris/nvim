@@ -44,10 +44,10 @@ require('conform').setup {
 
   formatters_by_ft = {
     lua = { 'stylua' },
-    javascript = { 'prettierd', 'prettier', stop_after_first = true },
-    javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
-    typescript = { 'prettierd', 'prettier', stop_after_first = true },
-    typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+    javascript = { 'prettierd' },
+    javascriptreact = { 'prettierd' },
+    typescript = { 'prettierd' },
+    typescriptreact = { 'prettierd' },
     python = { 'isort', 'black' },
   },
 
@@ -56,6 +56,6 @@ require('conform').setup {
       return
     end
 
-    return { timeout_ms = 5000, lsp_fallback = true }
+    return { timeout_ms = 3000, lsp_format = 'fallback', async = false }
   end,
 }

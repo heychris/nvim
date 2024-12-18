@@ -7,7 +7,7 @@ local function hl_validate(hl)
 end
 
 fzf.setup {
-  { 'default-title' }, -- base profile
+  'default-title',
   desc = 'custom telescope based profile',
   fzf_opts = {
     ['--layout'] = 'reverse',
@@ -107,6 +107,7 @@ fzf.setup {
   defaults = {
     color_icons = false,
     git_icons = false,
+    formatter = 'path.dirname_first',
   },
 }
 

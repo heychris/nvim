@@ -30,9 +30,9 @@ return {
 
   {
     'stevearc/conform.nvim',
-    -- pin = true,
     event = { 'BufWritePre' },
     cmd = 'ConformInfo',
+    lazy = true,
     config = function()
       require 'heychris.config.conform'
     end,
@@ -40,8 +40,7 @@ return {
 
   {
     'mfussenegger/nvim-lint',
-    event = { 'VeryLazy' },
-    lazy = true,
+    event = 'LazyFile',
     config = function()
       require 'heychris.config.lint'
     end,
