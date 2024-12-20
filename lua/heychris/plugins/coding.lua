@@ -40,7 +40,8 @@ return {
 
   {
     'mfussenegger/nvim-lint',
-    event = 'LazyFile',
+    event = 'VeryLazy',
+    lazy = true,
     config = function()
       require 'heychris.config.lint'
     end,
