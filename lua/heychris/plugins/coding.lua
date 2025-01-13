@@ -1,13 +1,28 @@
 return {
-  -- {
-  --   'zbirenbaum/copilot.lua',
-  --   cmd = 'Copilot',
-  --   event = 'InsertEnter',
-  --   opts = {
-  --     suggestion = { enabled = false },
-  --     panel = { enabled = false },
-  --   },
-  -- },
+  {
+    'zbirenbaum/copilot.lua',
+    cmd = 'Copilot',
+    build = ':Copilot auth',
+    event = 'InsertEnter',
+    opts = {
+      suggestion = { enabled = false },
+      panel = { enabled = false },
+
+      -- suggestion = {
+      --   auto_trigger = true,
+      --   keymap = {
+      --     accept = '<C-y>',
+      --     next = '<M-]>',
+      --     prev = '<M-[>',
+      --   },
+      -- },
+      -- panel = { enabled = false },
+      -- filetypes = {
+      --   markdown = true,
+      --   help = true,
+      -- },
+    },
+  },
 
   {
     'yioneko/nvim-vtsls',
@@ -52,21 +67,4 @@ return {
     event = { 'VeryLazy' },
     opts = {},
   },
-  --
-  -- {
-  --   'mfussenegger/nvim-dap',
-  --   dependencies = {
-  --     'rcarriga/nvim-dap-ui',
-  --     'theHamsta/nvim-dap-virtual-text',
-  --     'nvim-neotest/nvim-nio',
-  --     'folke/neoconf.nvim',
-  --     'jay-babu/mason-nvim-dap.nvim',
-  --     'williamboman/mason.nvim',
-  --   },
-  --   event = { 'VeryLazy' },
-  --   lazy = true,
-  --   config = function()
-  --     require 'heychris.config.dap'
-  --   end,
-  -- },
 }
