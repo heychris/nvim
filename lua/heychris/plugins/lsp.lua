@@ -11,13 +11,14 @@ return {
 
     'saghen/blink.cmp',
 
-    -- Useful status updates for LSP
     {
       'j-hui/fidget.nvim',
       opts = {
-        progress = {
-          display = {
-            done_icon = '󰄬',
+        notification = {
+          window = {
+            winblend = 0,
+            border = 'rounded',
+            x_padding = 0,
           },
         },
       },

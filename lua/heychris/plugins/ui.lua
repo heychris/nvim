@@ -1,5 +1,4 @@
 return {
-  -- Detect tabstop and shiftwidth automatically
   {
     'tpope/vim-sleuth',
     event = 'VeryLazy',
@@ -16,7 +15,7 @@ return {
     init = function()
       vim.g.lualine_laststatus = vim.o.laststatus
       if vim.fn.argc(-1) > 0 then
-        -- set an empty statusline till lualine loads
+        -- set an empty statusline until lualine loads
         vim.o.statusline = ' '
       else
         -- hide the statusline on the starter page
@@ -27,70 +26,4 @@ return {
       require 'heychris.config.lualine'
     end,
   },
-  {
-    'aaronik/treewalker.nvim',
-    opts = {
-      highlight = false,
-    },
-    keys = {
-      { '<A-j>', ':Treewalker Down<CR>', desc = 'Down AST' },
-      { '<A-k>', ':Treewalker Up<CR>', desc = 'Up AST' },
-      { '<A-h>', ':Treewalker Left<CR>', desc = 'Left AST' },
-      { '<A-l>', ':Treewalker Right<CR>', desc = 'Right AST' },
-    },
-  },
-  --
-  -- {
-  --   'folke/flash.nvim',
-  --   event = 'VeryLazy',
-  --   opts = {
-  --     modes = {
-  --       char = {
-  --         enabled = false,
-  --       },
-  --     },
-  --   },
-  --   keys = {
-  --     {
-  --       's',
-  --       mode = { 'n', 'x', 'o' },
-  --       function()
-  --         require('flash').jump()
-  --       end,
-  --       desc = 'Flash',
-  --     },
-  --     {
-  --       'S',
-  --       mode = { 'n', 'x', 'o' },
-  --       function()
-  --         require('flash').treesitter()
-  --       end,
-  --       desc = 'Flash Treesitter',
-  --     },
-  --     {
-  --       'r',
-  --       mode = 'o',
-  --       function()
-  --         require('flash').remote()
-  --       end,
-  --       desc = 'Remote Flash',
-  --     },
-  --     {
-  --       'R',
-  --       mode = { 'o', 'x' },
-  --       function()
-  --         require('flash').treesitter_search()
-  --       end,
-  --       desc = 'Treesitter Search',
-  --     },
-  --     {
-  --       '<c-s>',
-  --       mode = { 'c' },
-  --       function()
-  --         require('flash').toggle()
-  --       end,
-  --       desc = 'Toggle Flash Search',
-  --     },
-  --   },
-  -- },
 }

@@ -59,6 +59,9 @@ local theme = {
   },
 }
 
+local lualine_require = require 'lualine_require'
+lualine_require.require = require
+
 require('lualine').setup {
   icons_enabled = false,
   sections = {

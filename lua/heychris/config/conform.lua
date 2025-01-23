@@ -34,7 +34,6 @@ require('conform').setup {
   -- log_level = vim.log.levels.DEBUG,
   notify_on_error = false,
 
-  -- The options you set here will be merged with the builtin formatters.
   formatters = {
     injected = { options = { ignore_errors = true } },
     black = {
@@ -56,6 +55,6 @@ require('conform').setup {
       return
     end
 
-    return { timeout_ms = 3000, lsp_format = 'fallback', async = false }
+    return { timeout_ms = 3000, lsp_format = 'fallback', async = false, quite = false }
   end,
 }
