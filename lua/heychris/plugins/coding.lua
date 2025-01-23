@@ -5,22 +5,8 @@ return {
     build = ':Copilot auth',
     event = 'InsertEnter',
     opts = {
-      suggestion = { enabled = false },
       panel = { enabled = false },
-
-      -- suggestion = {
-      --   auto_trigger = true,
-      --   keymap = {
-      --     accept = '<C-y>',
-      --     next = '<M-]>',
-      --     prev = '<M-[>',
-      --   },
-      -- },
-      -- panel = { enabled = false },
-      -- filetypes = {
-      --   markdown = true,
-      --   help = true,
-      -- },
+      completion = { enabled = false },
     },
   },
 
@@ -32,15 +18,9 @@ return {
   },
 
   {
-    'numToStr/Comment.nvim',
+    'folke/ts-comments.nvim',
+    opts = {},
     event = 'VeryLazy',
-    keys = {
-      { 'gc', mode = { 'n', 'x' } },
-      { 'gb', mode = { 'n', 'x' } },
-    },
-    config = function()
-      require 'heychris.config.comment'
-    end,
   },
 
   {

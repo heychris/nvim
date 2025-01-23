@@ -19,7 +19,8 @@ return {
         use_nvim_cmp_as_default = true,
         nerd_font_variant = 'mono',
 
-        -- Blink does not expose its default kind icons so you must copy them all (or set your custom ones) and add Copilot
+        -- Blink does not expose its default kind icons so you must copy them
+        -- all (or set your custom ones) and add Copilot
         kind_icons = {
           Copilot = '',
           Text = '󰉿',
@@ -57,7 +58,6 @@ return {
 
       completion = {
         accept = {
-          -- experimental auto-brackets support
           auto_brackets = { enabled = true },
         },
         menu = {
@@ -100,6 +100,7 @@ return {
         },
       },
     },
+
     opts_extend = { 'sources.default' },
   },
 }
