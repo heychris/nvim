@@ -35,6 +35,9 @@ local servers = {
         },
       },
       typescript = {
+        tsserver = {
+          maxTsSServerMemory = 8192,
+        },
         updateImportsOnFileMove = { enabled = "always" },
         suggest = {
           completeFunctionCalls = true,
