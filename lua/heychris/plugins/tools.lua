@@ -1,26 +1,26 @@
 return {
   {
-    'mbbill/undotree',
-    lazy = 'VeryLazy',
+    "mbbill/undotree",
+    lazy = "VeryLazy",
     keys = {
-      { '<leader>u', vim.cmd.UndotreeToggle, desc = 'Toggle undotree' },
+      { "<leader>u", vim.cmd.UndotreeToggle, desc = "Toggle undotree" },
     },
   },
 
   {
-    'stevearc/oil.nvim',
-    cmd = 'Oil',
+    "stevearc/oil.nvim",
+    cmd = "Oil",
     lazy = false,
     opts = {
       columns = {
-        { 'mtime', highlight = 'Number' },
+        { "mtime", highlight = "Number" },
       },
       win_options = {
         number = false,
         relativenumber = false,
-        signcolumn = 'no',
-        foldcolumn = '0',
-        statuscolumn = '',
+        signcolumn = "no",
+        foldcolumn = "0",
+        statuscolumn = "",
       },
       cleanup_delay_ms = false,
       delete_to_trash = true,
@@ -29,22 +29,22 @@ return {
       view_options = {
         show_hidden = true,
         is_always_hidden = function(name)
-          return name == '..'
+          return name == ".."
         end,
       },
     },
     keys = {
-      { '<leader>-', '<CMD>Oil<CR>', desc = 'Open parent directory' },
+      { "<leader>-", "<CMD>Oil<CR>", desc = "Open parent directory" },
     },
   },
 
   {
-    'ThePrimeagen/harpoon',
-    branch = 'harpoon2',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
     keys = function()
-      local harpoon = require 'harpoon'
-      local Path = require 'plenary.path'
+      local harpoon = require("harpoon")
+      local Path = require("plenary.path")
 
       local path_separator = Path.path.sep
 
@@ -53,20 +53,20 @@ return {
       end
 
       local function maybe_path_from_git_root(path)
-        local home = vim.fs.find('.git', {
+        local home = vim.fs.find(".git", {
           path = path,
           upward = true,
-          type = 'directory',
+          type = "directory",
         })[1]
 
         if home == nil then
           return path
         end
 
-        local trunk = table.concat {
-          '/',
-          vim.fn.expand '%r',
-        }
+        local trunk = table.concat({
+          "/",
+          vim.fn.expand("%r"),
+        })
 
         return trunk
       end
@@ -78,13 +78,13 @@ return {
         elseif #segments == 1 then
           return segments[#segments]
         elseif #segments == 2 then
-          return table.concat({ '..', segments[#segments - 1], segments[#segments] }, sep)
+          return table.concat({ "..", segments[#segments - 1], segments[#segments] }, sep)
         else
-          return table.concat({ '..', segments[#segments - 2], segments[#segments - 1], segments[#segments] }, sep)
+          return table.concat({ "..", segments[#segments - 2], segments[#segments - 1], segments[#segments] }, sep)
         end
       end
 
-      harpoon:setup {
+      harpoon:setup({
         default = {
           create_list_item = function(config, name)
             name = name or normalize_path(vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()), config.get_root_dir())
@@ -96,11 +96,11 @@ return {
             end
 
             return {
-              value = vim.fn.expand '%:p',
+              value = vim.fn.expand("%:p"),
               context = {
                 row = pos[1],
                 col = pos[2],
-                path = maybe_path_from_git_root(vim.fn.expand '%:p'),
+                path = maybe_path_from_git_root(vim.fn.expand("%:p")),
               },
             }
           end,
@@ -126,41 +126,41 @@ return {
         settings = {
           save_on_toggle = true,
         },
-      }
+      })
 
       return {
         {
-          '<leader>a',
+          "<leader>a",
           function()
             harpoon:list():add()
           end,
         },
         {
-          '<C-e>',
+          "<C-e>",
           function()
             harpoon.ui:toggle_quick_menu(harpoon:list())
           end,
         },
         {
-          '<C-h>',
+          "<C-h>",
           function()
             harpoon:list():select(1)
           end,
         },
         {
-          '<C-j>',
+          "<C-j>",
           function()
             harpoon:list():select(2)
           end,
         },
         {
-          '<C-n>',
+          "<C-n>",
           function()
             harpoon:list():select(3)
           end,
         },
         {
-          '<C-m>',
+          "<C-m>",
           function()
             harpoon:list():select(4)
           end,
@@ -170,16 +170,16 @@ return {
   },
 
   {
-    'ibhagwan/fzf-lua',
+    "ibhagwan/fzf-lua",
     lazy = false,
     dependencies = {
-      'nvim-tree/nvim-web-devicons',
-      { 'junegunn/fzf', build = './install --bin' },
+      "nvim-tree/nvim-web-devicons",
+      { "junegunn/fzf", build = "./install --bin" },
     },
     config = function()
-      require 'heychris.config.fzf'
+      require("heychris.config.fzf")
     end,
   },
 
-  'tpope/vim-surround',
+  "tpope/vim-surround",
 }

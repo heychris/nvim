@@ -1,20 +1,20 @@
-local ts_configs = require 'nvim-treesitter.configs'
+local ts_configs = require("nvim-treesitter.configs")
 
 ---@diagnostic disable-next-line: missing-fields
-ts_configs.setup {
+ts_configs.setup({
   ensure_installed = {
-    'bash',
-    'query',
-    'html',
-    'javascript',
-    'typescript',
-    'tsx',
-    'json',
-    'markdown',
-    'vim',
-    'vimdoc',
-    'lua',
-    'toml',
+    "bash",
+    "query",
+    "html",
+    "javascript",
+    "typescript",
+    "tsx",
+    "json",
+    "markdown",
+    "vim",
+    "vimdoc",
+    "lua",
+    "toml",
   },
 
   highlight = {
@@ -30,10 +30,10 @@ ts_configs.setup {
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = '<C-space>',
-      node_incremental = '<C-space>',
+      init_selection = "<C-space>",
+      node_incremental = "<C-space>",
       scope_incremental = false,
-      node_decremental = '<bs>',
+      node_decremental = "<bs>",
     },
   },
 
@@ -65,28 +65,28 @@ ts_configs.setup {
   textsubjects = {
     enable = true,
     keymaps = {
-      ['.'] = 'textsubjects-smart',
-      [';'] = 'textsubjects-container-outer',
-      ['i;'] = 'textsubjects-container-inner',
+      ["."] = "textsubjects-smart",
+      [";"] = "textsubjects-container-outer",
+      ["i;"] = "textsubjects-container-inner",
     },
   },
 
   lsp_interop = {
     enable = true,
-    border = 'solid',
+    border = "solid",
     peek_definition_code = {
-      ['<Leader>K'] = '@function.outer',
+      ["<Leader>K"] = "@function.outer",
     },
   },
-}
+})
 
 ---@diagnostic disable-next-line: missing-fields
-require('ts_context_commentstring').setup {
+require("ts_context_commentstring").setup({
   enable_autocmd = false,
 
   config = {
-    lua = '-- %s',
+    lua = "-- %s",
   },
-}
+})
 
 vim.g.skip_ts_context_commentstring_module = true

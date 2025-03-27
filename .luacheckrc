@@ -1,5 +1,1 @@
-std.nvim = {
-  globals = {
-    'vim',
-  },
-}
+globals = { "vim" }

@@ -24,53 +24,53 @@
 --   },
 -- }
 
-local p = require 'rose-pine.palette'
+local p = require("rose-pine.palette")
 
 local theme = {
   normal = {
-    a = { bg = p.rose, fg = p.base, gui = 'bold' },
+    a = { bg = p.rose, fg = p.base, gui = "bold" },
     b = { bg = p.none, fg = p.muted },
     c = { bg = p.none, fg = p.muted },
   },
   insert = {
-    a = { bg = p.foam, fg = p.base, gui = 'bold' },
+    a = { bg = p.foam, fg = p.base, gui = "bold" },
     b = { bg = p.none, fg = p.muted },
     c = { bg = p.none, fg = p.muted },
   },
   visual = {
-    a = { bg = p.iris, fg = p.base, gui = 'bold' },
+    a = { bg = p.iris, fg = p.base, gui = "bold" },
     b = { bg = p.none, fg = p.muted },
     c = { bg = p.none, fg = p.muted },
   },
   replace = {
-    a = { bg = p.pine, fg = p.base, gui = 'bold' },
+    a = { bg = p.pine, fg = p.base, gui = "bold" },
     b = { bg = p.none, fg = p.muted },
     c = { bg = p.none, fg = p.muted },
   },
   command = {
-    a = { bg = p.love, fg = p.base, gui = 'bold' },
+    a = { bg = p.love, fg = p.base, gui = "bold" },
     b = { bg = p.none, fg = p.muted },
     c = { bg = p.none, fg = p.muted },
   },
   inactive = {
-    a = { bg = p.base, fg = p.muted, gui = 'bold' },
+    a = { bg = p.base, fg = p.muted, gui = "bold" },
     b = { bg = p.none, fg = p.muted },
     c = { bg = p.none, fg = p.muted },
   },
 }
 
-local lualine_require = require 'lualine_require'
+local lualine_require = require("lualine_require")
 lualine_require.require = require
 
-require('lualine').setup {
+require("lualine").setup({
   icons_enabled = false,
   sections = {
-    lualine_a = { 'mode' },
+    lualine_a = { "mode" },
     lualine_b = {
-      { 'branch' },
+      { "branch" },
 
       {
-        'filename',
+        "filename",
         file_status = false, -- Displays file status (readonly status, modified status)
         newfile_status = false, -- Display new file status (new file means no write after created)
 
@@ -83,10 +83,10 @@ require('lualine').setup {
       },
 
       {
-        'diagnostics',
-        sources = { 'nvim_diagnostic' },
+        "diagnostics",
+        sources = { "nvim_diagnostic" },
         -- Displays diagnostics for the defined severity types
-        sections = { 'error', 'warn' },
+        sections = { "error", "warn" },
         colored = false, -- Displays diagnostics status in color if set to true.
         update_in_insert = false, -- Update diagnostics in insert mode.
         always_visible = false, -- Show diagnostics even if there are none.
@@ -96,26 +96,26 @@ require('lualine').setup {
     lualine_x = {
       {
         function()
-          local linters = require('lint').get_running()
+          local linters = require("lint").get_running()
 
           if #linters == 0 then
-            return ''
+            return ""
           end
-          return table.concat(linters, ', ')
+          return table.concat(linters, ", ")
         end,
       },
 
       {
-        'filetype',
+        "filetype",
         colored = false,
       },
 
       {
         -- Lsp server name .
         function()
-          local msg = 'No Active Lsp'
+          local msg = "No Active Lsp"
           local bufnr = vim.api.nvim_get_current_buf()
-          local clients = vim.lsp.get_clients { bufnr = bufnr }
+          local clients = vim.lsp.get_clients({ bufnr = bufnr })
 
           if next(clients) == nil then
             return msg
@@ -127,10 +127,10 @@ require('lualine').setup {
           end
 
           if #client_names > 2 then
-            return string.format('[%s, %s, and %d more]', client_names[1], client_names[2], #client_names - 2)
+            return string.format("[%s, %s, and %d more]", client_names[1], client_names[2], #client_names - 2)
           end
 
-          return string.format('[%s]', table.concat(client_names, ', '))
+          return string.format("[%s]", table.concat(client_names, ", "))
         end,
         icon = false,
       },
@@ -144,7 +144,7 @@ require('lualine').setup {
   },
   options = {
     theme = theme,
-    section_separators = '',
-    component_separators = '',
+    section_separators = "",
+    component_separators = "",
   },
-}
+})
