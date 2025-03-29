@@ -5,6 +5,9 @@ return {
     keys = {
       { "<leader>u", vim.cmd.UndotreeToggle, desc = "Toggle undotree" },
     },
+    config = function()
+      vim.g.undotree_DiffAutoOpen = 0
+    end,
   },
 
   {
