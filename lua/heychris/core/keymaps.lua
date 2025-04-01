@@ -59,6 +59,21 @@ vim.keymap.set("n", "q", function()
   end
 end)
 
+local verbose_active = true
+
+-- Verbose code mode
+vim.keymap.set("n", "<leader>v", function()
+  if verbose_active then
+    vim.lsp.inlay_hint.enable(false)
+    vim.diagnostic.config({ virtual_lines = false })
+    verbose_active = false
+  else
+    vim.lsp.inlay_hint.enable(true)
+    vim.diagnostic.config({ virtual_lines = true })
+    verbose_active = true
+  end
+end, { desc = "Verbose code mode" })
+
 -- Comments text object
 local comment = require("vim._comment")
 vim.keymap.set("x", "ic", comment.textobject)
