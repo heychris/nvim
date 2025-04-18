@@ -26,4 +26,6 @@ return {
       require("heychris.config.lualine")
     end,
   },
+
+  { "kevinhwang91/nvim-bqf" },
 }

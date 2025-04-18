@@ -61,6 +61,7 @@ vim.opt.diffopt:append("algorithm:histogram")
 vim.o.winborder = "rounded"
 
 vim.diagnostic.config({
+  severity_sort = true,
   virtual_text = {
     space = 4,
     prefix = "",
