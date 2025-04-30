@@ -10,7 +10,7 @@ fzf.setup({
   "default-title",
   desc = "custom telescope based profile",
   fzf_opts = {
-    ["--layout"] = "reverse",
+    ["--layout"] = "default",
     ["--marker"] = "+",
     ["--margin"] = "1",
   },
@@ -18,10 +18,10 @@ fzf.setup({
     width = 0.8,
     height = 0.9,
     preview = {
-      hidden = "nohidden",
-      vertical = "up:50%",
-      -- horizontal = 'right:50%',
-      layout = "vertical",
+      hidden = false,
+      -- vertical = "up:50%",
+      horizontal = "right:50%",
+      layout = "horizontal",
       flip_columns = 120,
       delay = 10,
       winopts = { number = false },
