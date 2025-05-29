@@ -26,8 +26,10 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
--- Find and replace word under cursor
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+-- Find and replace word under cursor in the current line
+vim.keymap.set("n", "<leader>s", [[:s/\<<C-r><C-w>\>/<C-r><C-w>/gi<Left><Left><Left>]])
+-- Find and replace word under cursor in the whole file
+vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
@@ -59,22 +61,6 @@ vim.keymap.set("n", "q", function()
   end
 end)
 
-local verbose_active = true
-
--- Verbose code mode
-vim.keymap.set("n", "<leader>v", function()
-  if verbose_active then
-    vim.lsp.inlay_hint.enable(false)
-    vim.diagnostic.config({ virtual_lines = false })
-    verbose_active = false
-  else
-    vim.lsp.inlay_hint.enable(true)
-    vim.diagnostic.config({ virtual_lines = true })
-    verbose_active = true
-  end
-end, { desc = "Verbose code mode" })
-
--- Comments text object
 local comment = require("vim._comment")
 vim.keymap.set("x", "ic", comment.textobject)
 vim.keymap.set("o", "ic", comment.textobject)
