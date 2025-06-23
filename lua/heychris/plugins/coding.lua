@@ -1,16 +1,5 @@
 return {
   {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    build = ":Copilot auth",
-    event = "InsertEnter",
-    opts = {
-      panel = { enabled = false },
-      completion = { enabled = false },
-    },
-  },
-
-  {
     "yioneko/nvim-vtsls",
     config = function()
       require("heychris.config.typescript")
