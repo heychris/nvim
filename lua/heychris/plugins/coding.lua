@@ -36,4 +36,11 @@ return {
     event = { "VeryLazy" },
     opts = {},
   },
+
+  {
+    "supermaven-inc/supermaven-nvim",
+    config = function()
+      require("supermaven-nvim").setup({})
+    end,
+  },
 }
