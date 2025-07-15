@@ -41,7 +41,7 @@ return {
 
   {
     "kdheepak/lazygit.nvim",
-    lazy = false,
+    lazy = true,
     cmd = {
       "LazyGit",
       "LazyGitConfig",
@@ -58,11 +58,19 @@ return {
   },
 
   {
-    -- Adds git related signs to the gutter, as well as utilities for managing changes
-    "lewis6991/gitsigns.nvim",
-    event = "VeryLazy",
+    "echasnovski/mini.diff",
+    version = "*",
     config = function()
-      require("heychris.config.gitsigns")
+      require("mini.diff").setup({
+        view = {
+          style = "sign",
+          signs = {
+            add = "+",
+            change = "~",
+            delete = "-",
+          },
+        },
+      })
     end,
   },
 
