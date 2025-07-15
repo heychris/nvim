@@ -1,31 +1,31 @@
 return {
   -- Git related plugins
-  -- {
-  --   'tpope/vim-fugitive',
-  --   cmd = {
-  --     'G',
-  --     'Gcd',
-  --     'Gclog',
-  --     'Gdiffsplit',
-  --     'Gdrop',
-  --     'Gedit',
-  --     'Ggrep',
-  --     'Git',
-  --     'Glcd',
-  --     'Glgrep',
-  --     'Gllog',
-  --     'Gpedit',
-  --     'Gread',
-  --     'Gsplit',
-  --     'Gtabedit',
-  --     'Gvdiffsplit',
-  --     'Gvsplit',
-  --     'Gwq',
-  --     'Gwrite',
-  --   },
-  --   lazy = true,
-  --   event = { 'BufWritePost', 'BufReadPre' },
-  -- },
+  {
+    "tpope/vim-fugitive",
+    cmd = {
+      "G",
+      "Gcd",
+      "Gclog",
+      "Gdiffsplit",
+      "Gdrop",
+      "Gedit",
+      "Ggrep",
+      "Git",
+      "Glcd",
+      "Glgrep",
+      "Gllog",
+      "Gpedit",
+      "Gread",
+      "Gsplit",
+      "Gtabedit",
+      "Gvdiffsplit",
+      "Gvsplit",
+      "Gwq",
+      "Gwrite",
+    },
+    lazy = true,
+    event = { "BufWritePost", "BufReadPre" },
+  },
   -- 'tpope/vim-rhubarb',
   {
     "sindrets/diffview.nvim",
@@ -33,29 +33,10 @@ return {
     keys = {
       -- { '<leader>gh', '<cmd>DiffviewOpen<CR>', desc = 'DiffviewOpen' },
       { "<leader>gh", "<cmd>DiffviewFileHistory % --no-merges --follow<CR>", desc = "Git file history" },
+      { "<leader>gr", "<cmd>DiffviewOpen origin/HEAD...HEAD --imply-local<CR>", desc = "Git PR review" },
     },
     config = function()
       require("heychris.config.diffview")
-    end,
-  },
-
-  {
-    "NeogitOrg/neogit",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "sindrets/diffview.nvim",
-
-      "ibhagwan/fzf-lua",
-    },
-    keys = {
-      { "<leader>gs", "<cmd>Neogit kind=floating<CR>", desc = "LazyGit" },
-    },
-    config = function()
-      require("neogit").setup({
-        floating = {
-          height = 0.8,
-        },
-      })
     end,
   },
 
