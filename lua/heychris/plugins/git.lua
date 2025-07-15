@@ -40,23 +40,43 @@ return {
   },
 
   {
-    "kdheepak/lazygit.nvim",
-    lazy = true,
-    cmd = {
-      "LazyGit",
-      "LazyGitConfig",
-      "LazyGitCurrentFile",
-      "LazyGitFilter",
-      "LazyGitFilterCurrentFile",
-    },
+    "NeogitOrg/neogit",
     dependencies = {
       "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+
+      "ibhagwan/fzf-lua",
     },
     keys = {
-      { "<leader>gs", "<cmd>LazyGit<CR>", desc = "LazyGit" },
+      { "<leader>gs", "<cmd>Neogit kind=floating<CR>", desc = "LazyGit" },
     },
+    config = function()
+      require("neogit").setup({
+        floating = {
+          height = 0.8,
+        },
+      })
+    end,
   },
 
+  -- {
+  --   "kdheepak/lazygit.nvim",
+  --   lazy = true,
+  --   cmd = {
+  --     "LazyGit",
+  --     "LazyGitConfig",
+  --     "LazyGitCurrentFile",
+  --     "LazyGitFilter",
+  --     "LazyGitFilterCurrentFile",
+  --   },
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  --   keys = {
+  --     { "<leader>gs", "<cmd>LazyGit<CR>", desc = "LazyGit" },
+  --   },
+  -- },
+  --
   {
     "echasnovski/mini.diff",
     version = "*",
