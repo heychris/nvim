@@ -33,31 +33,30 @@ return {
     keys = {
       -- { '<leader>gh', '<cmd>DiffviewOpen<CR>', desc = 'DiffviewOpen' },
       { "<leader>gh", "<cmd>DiffviewFileHistory % --no-merges --follow<CR>", desc = "Git file history" },
-      { "<leader>gr", "<cmd>DiffviewOpen origin/HEAD...HEAD --imply-local<CR>", desc = "Git PR review" },
     },
     config = function()
       require("heychris.config.diffview")
     end,
   },
 
-  -- {
-  --   "kdheepak/lazygit.nvim",
-  --   lazy = true,
-  --   cmd = {
-  --     "LazyGit",
-  --     "LazyGitConfig",
-  --     "LazyGitCurrentFile",
-  --     "LazyGitFilter",
-  --     "LazyGitFilterCurrentFile",
-  --   },
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --   },
-  --   keys = {
-  --     { "<leader>gs", "<cmd>LazyGit<CR>", desc = "LazyGit" },
-  --   },
-  -- },
-  --
+  {
+    "kdheepak/lazygit.nvim",
+    lazy = true,
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    keys = {
+      { "<leader>gs", "<cmd>LazyGit<CR>", desc = "LazyGit" },
+    },
+  },
+
   {
     "echasnovski/mini.diff",
     version = "*",

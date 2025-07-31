@@ -2,7 +2,7 @@ local p = require("rose-pine.palette")
 
 local theme = {
   normal = {
-    a = { bg = p.none, fg = p.subtle },
+    a = { bg = p.none, fg = p.text },
     b = { bg = p.none, fg = p.muted },
     c = { bg = p.none, fg = p.muted },
   },
@@ -54,7 +54,7 @@ require("lualine").setup({
         -- 2: Absolute path
         -- 3: Absolute path, with tilde as the home directory
         -- 4: Filename and parent dir, with tilde as the home directory
-        path = 1,
+        path = 3,
       },
 
       {
@@ -70,7 +70,7 @@ require("lualine").setup({
     lualine_c = {},
     lualine_x = {
       {
-        color = { fg = p.subtle },
+        color = { fg = p.text },
         "branch",
       },
 
