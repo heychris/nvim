@@ -1,17 +1,35 @@
+local p = require("rose-pine.palette")
+
 local theme = {
   normal = {
-    a = { bg = "NONE", fg = "Normal", gui = "bold" },
-    b = { bg = "NONE", fg = "Normal" },
-    c = { bg = "NONE", fg = "Normal" },
+    a = { bg = p.none, fg = p.text },
+    b = { bg = p.none, fg = p.muted },
+    c = { bg = p.none, fg = p.muted },
   },
-  insert = { a = { fg = "Normal" } },
-  visual = { a = { fg = "Normal" } },
-  replace = { a = { fg = "Normal" } },
-  command = { a = { fg = "Normal" } },
+  insert = {
+    a = { bg = p.none, fg = p.foam },
+    b = { bg = p.none, fg = p.muted },
+    c = { bg = p.none, fg = p.muted },
+  },
+  visual = {
+    a = { bg = p.none, fg = p.iris },
+    b = { bg = p.none, fg = p.muted },
+    c = { bg = p.none, fg = p.muted },
+  },
+  replace = {
+    a = { bg = p.none, fg = p.pine },
+    b = { bg = p.none, fg = p.muted },
+    c = { bg = p.none, fg = p.muted },
+  },
+  command = {
+    a = { bg = p.none, fg = p.love },
+    b = { bg = p.none, fg = p.muted },
+    c = { bg = p.none, fg = p.muted },
+  },
   inactive = {
-    a = { bg = "NONE", fg = "Comment" },
-    b = { bg = "NONE", fg = "Comment" },
-    c = { bg = "NONE", fg = "Comment" },
+    a = { bg = p.none, fg = p.base },
+    b = { bg = p.none, fg = p.muted },
+    c = { bg = p.none, fg = p.muted },
   },
 }
 
@@ -23,10 +41,13 @@ require("lualine").setup({
   sections = {
     lualine_a = { "mode" },
     lualine_b = {
+
       {
+        color = { fg = p.muted },
+
         "filename",
-        file_status = true,
-        newfile_status = false,
+        file_status = true, -- Displays file status (readonly status, modified status)
+        newfile_status = false, -- Display new file status (new file means no write after created)
 
         -- 0: Just the filename
         -- 1: Relative path
@@ -48,7 +69,10 @@ require("lualine").setup({
     },
     lualine_c = {},
     lualine_x = {
-      { "branch" },
+      {
+        color = { fg = p.text },
+        "branch",
+      },
 
       {
         function()
