@@ -1,35 +1,62 @@
-local p = require("rose-pine.palette")
+local lp = require("catppuccin.palettes").get_palette("frappe")
+
+-- rosewater = "#f2d5cf",
+-- flamingo = "#eebebe",
+-- pink = "#f4b8e4",
+-- mauve = "#ca9ee6",
+-- red = "#e78284",
+-- maroon = "#ea999c",
+-- peach = "#ef9f76",
+-- yellow = "#e5c890",
+-- green = "#a6d189",
+-- teal = "#81c8be",
+-- sky = "#99d1db",
+-- sapphire = "#85c1dc",
+-- blue = "#8caaee",
+-- lavender = "#babbf1",
+-- text = "#c6d0f5",
+-- subtext1 = "#b5bfe2",
+-- subtext0 = "#a5adce",
+-- overlay2 = "#949cbb",
+-- overlay1 = "#838ba7",
+-- overlay0 = "#737994",
+-- surface2 = "#626880",
+-- surface1 = "#51576d",
+-- surface0 = "#414559",
+-- base = "#303446",
+-- mantle = "#292c3c",
+-- crust = "#232634",
 
 local theme = {
   normal = {
-    a = { bg = p.none, fg = p.text },
-    b = { bg = p.none, fg = p.muted },
-    c = { bg = p.none, fg = p.muted },
+    a = { bg = "None", fg = lp.text },
+    b = { bg = "None", fg = lp.subtext1 },
+    x = { bg = "None", fg = lp.subtext1 },
+    y = { bg = "None", fg = lp.surface2 },
   },
   insert = {
-    a = { bg = p.none, fg = p.foam },
-    b = { bg = p.none, fg = p.muted },
-    c = { bg = p.none, fg = p.muted },
+    a = { bg = "None", fg = lp.sapphire },
+    b = { bg = "None", fg = lp.subtext1 },
+    x = { bg = "None", fg = lp.subtext1 },
+    y = { bg = "None", fg = lp.surface2 },
   },
   visual = {
-    a = { bg = p.none, fg = p.iris },
-    b = { bg = p.none, fg = p.muted },
-    c = { bg = p.none, fg = p.muted },
+    a = { bg = "None", fg = lp.lavender },
+    b = { bg = "None", fg = lp.subtext1 },
+    x = { bg = "None", fg = lp.subtext1 },
+    y = { bg = "None", fg = lp.surface2 },
   },
   replace = {
-    a = { bg = p.none, fg = p.pine },
-    b = { bg = p.none, fg = p.muted },
-    c = { bg = p.none, fg = p.muted },
+    a = { bg = "None", fg = lp.red },
+    b = { bg = "None", fg = lp.subtext1 },
+    x = { bg = "None", fg = lp.subtext1 },
+    y = { bg = "None", fg = lp.surface2 },
   },
   command = {
-    a = { bg = p.none, fg = p.love },
-    b = { bg = p.none, fg = p.muted },
-    c = { bg = p.none, fg = p.muted },
-  },
-  inactive = {
-    a = { bg = p.none, fg = p.base },
-    b = { bg = p.none, fg = p.muted },
-    c = { bg = p.none, fg = p.muted },
+    a = { bg = "None", fg = lp.maroon },
+    b = { bg = "None", fg = lp.subtext1 },
+    x = { bg = "None", fg = lp.subtext1 },
+    y = { bg = "None", fg = lp.surface2 },
   },
 }
 
@@ -39,12 +66,11 @@ lualine_require.require = require
 require("lualine").setup({
   icons_enabled = false,
   sections = {
-    lualine_a = { "mode" },
+    lualine_a = {
+      "mode",
+    },
     lualine_b = {
-
       {
-        color = { fg = p.muted },
-
         "filename",
         file_status = true, -- Displays file status (readonly status, modified status)
         newfile_status = false, -- Display new file status (new file means no write after created)
@@ -69,11 +95,9 @@ require("lualine").setup({
     },
     lualine_c = {},
     lualine_x = {
-      {
-        color = { fg = p.text },
-        "branch",
-      },
-
+      "branch",
+    },
+    lualine_y = {
       {
         function()
           local msg = "No Active Lsp"
@@ -93,7 +117,6 @@ require("lualine").setup({
         icon = false,
       },
     },
-    lualine_y = {},
     lualine_z = {},
   },
   options = {

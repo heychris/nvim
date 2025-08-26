@@ -184,5 +184,28 @@ return {
     end,
   },
 
+  {
+    "dmtrKovalenko/fff.nvim",
+    build = "cargo build --release",
+    opts = { -- (optional)
+      debug = {
+        enabled = false,
+        show_scores = false,
+      },
+      prompt = "> ",
+      title = "Files",
+    },
+    lazy = false,
+    keys = {
+      {
+        "ff",
+        function()
+          require("fff").find_files()
+        end,
+        desc = "FFFind files",
+      },
+    },
+  },
+
   "tpope/vim-surround",
 }

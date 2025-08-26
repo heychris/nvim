@@ -42,7 +42,7 @@ return {
         },
       })
 
-      vim.cmd.colorscheme("rose-pine")
+      --vim.cmd.colorscheme("rose-pine")
     end,
   },
   {
@@ -120,6 +120,34 @@ return {
         },
       })
       --vim.cmd.colorscheme("vesper")
+    end,
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    config = function()
+      require("catppuccin").setup({
+        flavour = "frappe",
+        transparent_background = true,
+        float = {
+          transparent = true,
+          solid = false,
+        },
+        integrations = {
+          diffview = true,
+          fidget = true,
+          harpoon = true,
+          mason = true,
+          -- vimwiki = true,
+        },
+        custom_highlights = function(colors)
+          return {
+            FloatBorder = { fg = colors.subtext0 },
+          }
+        end,
+      })
+      vim.cmd.colorscheme("catppuccin")
     end,
   },
 }
