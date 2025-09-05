@@ -42,7 +42,7 @@ return {
         },
       })
 
-      --vim.cmd.colorscheme("rose-pine")
+      vim.cmd.colorscheme("rose-pine")
     end,
   },
   {
@@ -119,7 +119,7 @@ return {
           comment = mix("#8b8b8b", "#000000", math.abs(0.94)),
         },
       })
-      --vim.cmd.colorscheme("vesper")
+      -- vim.cmd.colorscheme("vesper")
     end,
   },
   {
@@ -147,7 +147,7 @@ return {
           }
         end,
       })
-      vim.cmd.colorscheme("catppuccin")
+      --vim.cmd.colorscheme("catppuccin")
     end,
   },
 }
