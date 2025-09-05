@@ -111,6 +111,8 @@ fzf.setup({
   },
 })
 
+fzf.register_ui_select()
+
 -- Disable for now until I can figure out how to search newly created files
 -- vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = 'Search Git Files' })
 -- vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind [H]elp' })
