@@ -1,29 +1,14 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    lazy = false,
+    branch = "main",
     build = ":TSUpdate",
-    cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
-    event = { "VeryLazy" },
-    init = function(plugin)
-      -- PERF: add nvim-treesitter queries to the rtp and it's custom query predicates early
-      -- This is needed because a bunch of plugins no longer `require("nvim-treesitter")`, which
-      -- no longer trigger the **nvim-treeitter** module to be loaded in time.
-      -- Luckily, the only thins that those plugins need are the custom queries, which we make available
-      -- during startup.
-      require("lazy.core.loader").add_to_rtp(plugin)
-      require("nvim-treesitter.query_predicates")
-    end,
     config = function()
       require("heychris.config.treesitter")
     end,
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      "nvim-treesitter/nvim-treesitter-context",
-      "RRethy/nvim-treesitter-textsubjects",
-    },
   },
 
-  -- Show context of the current function
   {
     "nvim-treesitter/nvim-treesitter-context",
     event = "VeryLazy",
@@ -32,13 +17,42 @@ return {
   },
 
   {
-    "JoosepAlviste/nvim-ts-context-commentstring",
-    lazy = true,
-    dependencies = "nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "main",
+    config = function()
+      require("nvim-treesitter-textobjects").setup({
+        select = {
+          lookahead = true,
+          selection_modes = {
+            ["@parameter.outer"] = "v",
+            ["@function.outer"] = "V",
+            ["@class.outer"] = "<c-v>",
+          },
+          include_surrounding_whitespace = false,
+        },
+      })
+
+      vim.keymap.set({ "x", "o" }, "af", function()
+        require("nvim-treesitter-textobjects.select").select_textobject("@function.outer", "textobjects")
+      end)
+      vim.keymap.set({ "x", "o" }, "if", function()
+        require("nvim-treesitter-textobjects.select").select_textobject("@function.inner", "textobjects")
+      end)
+    end,
   },
 
   {
-    "RRethy/nvim-treesitter-textsubjects",
-    lazy = true,
+    "kevintraver/nvim-treesitter-textsubjects",
+    branch = "nvim-treesitter-main-migration",
+    config = function()
+      require("nvim-treesitter-textsubjects").configure({
+        prev_selection = ",",
+        keymaps = {
+          ["."] = "textsubjects-smart",
+          [";"] = "textsubjects-container-outer",
+          ["i;"] = "textsubjects-container-inner",
+        },
+      })
+    end,
   },
 }
