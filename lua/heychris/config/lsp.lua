@@ -1,59 +1,60 @@
-local React = require("heychris.utils.react")
+-- local React = require("heychris.utils.react")
 
-local baseDefinitionHandler = vim.lsp.handlers["textDocument/definition"]
+-- local baseDefinitionHandler = vim.lsp.handlers["textDocument/definition"]
 
 local servers = {
-  vtsls = {
-    inlay_hints = {
-      enabled = true,
-    },
-    diagnostics = {
-      virtual_text = {
-        space = 4,
-        source = "if_many",
-        prefix = "●",
-      },
-    },
-    handlers = {
-      source_definition = function(err, result, method, ...)
-        if vim.tbl_islist(result) and #result > 1 then
-          local filtered_result = React.filter(result, React.filterReactDTS)
-          return baseDefinitionHandler(err, filtered_result, method, ...)
-        end
-
-        baseDefinitionHandler(err, result, method, ...)
-      end,
-    },
-    settings = {
-      complete_function_calls = true,
-      vtsls = {
-        enableMoveToFileCodeAction = true,
-        experimental = {
-          completion = {
-            enableServerSideFuzzyMatch = true,
-          },
-        },
-      },
-      typescript = {
-        tsserver = {
-          maxTsServerMemory = 8192,
-        },
-        updateImportsOnFileMove = { enabled = "always" },
-        suggest = {
-          completeFunctionCalls = true,
-        },
-        inlayHints = {
-          enumMemberValues = { enabled = true },
-          functionLikeReturnTypes = { enabled = true },
-          parameterNames = { enabled = "literals" },
-          parameterTypes = { enabled = true },
-          propertyDeclarationTypes = { enabled = true },
-          variableTypes = { enabled = false },
-        },
-        preferGoToSourceDefinition = true,
-      },
-    },
-  },
+  -- vtsls = {
+  --   inlay_hints = {
+  --     enabled = true,
+  --   },
+  --   diagnostics = {
+  --     virtual_text = {
+  --       space = 4,
+  --       source = "if_many",
+  --       prefix = "●",
+  --     },
+  --   },
+  --   handlers = {
+  --     source_definition = function(err, result, method, ...)
+  --       if vim.tbl_islist(result) and #result > 1 then
+  --         local filtered_result = React.filter(result, React.filterReactDTS)
+  --         return baseDefinitionHandler(err, filtered_result, method, ...)
+  --       end
+  --
+  --       baseDefinitionHandler(err, result, method, ...)
+  --     end,
+  --   },
+  --   settings = {
+  --     complete_function_calls = true,
+  --     vtsls = {
+  --       enableMoveToFileCodeAction = true,
+  --       experimental = {
+  --         completion = {
+  --           enableServerSideFuzzyMatch = true,
+  --         },
+  --       },
+  --     },
+  --     typescript = {
+  --       tsserver = {
+  --         maxTsServerMemory = 8192,
+  --       },
+  --       updateImportsOnFileMove = { enabled = "always" },
+  --       suggest = {
+  --         completeFunctionCalls = true,
+  --       },
+  --       inlayHints = {
+  --         enumMemberValues = { enabled = true },
+  --         functionLikeReturnTypes = { enabled = true },
+  --         parameterNames = { enabled = "literals" },
+  --         parameterTypes = { enabled = true },
+  --         propertyDeclarationTypes = { enabled = true },
+  --         variableTypes = { enabled = false },
+  --       },
+  --       preferGoToSourceDefinition = true,
+  --     },
+  --   },
+  -- },
+  tsgo = {},
   eslint = {
     settings = {
       experimental = {},
@@ -61,13 +62,9 @@ local servers = {
   },
 }
 
-require("mason").setup({
-  ui = {
-    border = "single",
-  },
-})
+require("mason").setup({})
 
-require("lspconfig.configs").vtsls = require("vtsls").lspconfig
+-- require("lspconfig.configs").vtsls = require("vtsls").lspconfig
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
@@ -85,10 +82,6 @@ require("mason-lspconfig").setup({
   },
 })
 
---  This function gets run when an LSP attaches to a particular buffer.
---    That is to say, every time a new file is opened that is associated with
---    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
---    function will be executed to configure the current buffer
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("config-lsp-attach", { clear = true }),
   callback = function(event)

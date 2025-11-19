@@ -8,7 +8,7 @@ if not vim.loop.fs_stat(lazypath) then
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
+    "--branch=stable",
     lazypath,
   })
 end
@@ -16,7 +16,8 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("heychris.plugins", {
   ui = {
-    border = "single",
+    border = "rounded",
+    backdrop = 100,
   },
   change_detection = {
     notify = false,

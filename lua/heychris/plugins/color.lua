@@ -3,7 +3,6 @@ return {
     "rose-pine/neovim",
     name = "rose-pine",
     config = function()
-      ---@diagnostic disable-next-line: missing-fields
       require("rose-pine").setup({
         variant = "auto",
         dark_variant = "main",
@@ -22,6 +21,7 @@ return {
         },
 
         highlight_groups = {
+          ["@property"] = { fg = "text", italic = false },
           MiniCursorword = { bg = "highlight_med" },
           SignAdd = { fg = "muted", bg = "none" },
           SignChange = { fg = "muted", bg = "none" },
@@ -36,7 +36,10 @@ return {
           DiagnosticVirtualTextWarn = { fg = "gold", bg = "gold", blend = 5 },
 
           -- FzfLuaNormal = { fg = colors.fg },
-          FzfLuaBorder = { fg = "muted" },
+          -- FloatBorder = { fg = "highlight_med" },
+          FzfLuaBorder = { fg = "highlight_med" },
+          FloatBorder = { fg = "highlight_med" },
+          LazyGitBorder = { fg = "highlight_med" },
           -- FzfLuaHeaderText = { fg = colors.fg },
           -- FzfLuaHeaderBind = { fg = colors.symbol },
         },
@@ -45,6 +48,7 @@ return {
       vim.cmd.colorscheme("rose-pine")
     end,
   },
+
   {
     "datsfilipe/vesper.nvim",
     lazy = false,
@@ -120,34 +124,6 @@ return {
         },
       })
       -- vim.cmd.colorscheme("vesper")
-    end,
-  },
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000,
-    config = function()
-      require("catppuccin").setup({
-        flavour = "frappe",
-        transparent_background = true,
-        float = {
-          transparent = true,
-          solid = false,
-        },
-        integrations = {
-          diffview = true,
-          fidget = true,
-          harpoon = true,
-          mason = true,
-          -- vimwiki = true,
-        },
-        custom_highlights = function(colors)
-          return {
-            FloatBorder = { fg = colors.subtext0 },
-          }
-        end,
-      })
-      --vim.cmd.colorscheme("catppuccin")
     end,
   },
 }
